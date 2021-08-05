@@ -189,13 +189,10 @@ set mouse=a
 " for the bar set the eslint pedos
 set laststatus=2
 function! LinterStatus() 
-  try
     let l:counts = ale#statusline#Count()
 
     let l:all_errors = l:counts.error + l:counts.style_error
     let l:all_non_errors = l:counts.total - l:all_errors
-  catch
-    return 0
 
    return l:counts.total == 0 ? 'OK' : printf(
    \   '%dW %dE',

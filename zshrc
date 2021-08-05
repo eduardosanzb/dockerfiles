@@ -1,7 +1,7 @@
 export ZSH="/home/eduardosanzb/.oh-my-zsh"
 export LANG=en_US.UTF-8
 
-ZSH_THEME="pure"
+# ZSH_THEME="pure"
 
 CASE_SENSITIVE="true"
 

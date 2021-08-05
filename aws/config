@@ -1,3 +1,19 @@
 [default]
 region=eu-central-1
 output=json
+
+[tilda-users]
+region = eu-central-1
+output = json
+
+[tilda-reviews]
+region = eu-central-1
+output = json
+
+[tilda-prod]
+region = eu-central-1
+output = json
+
+[tilda-care-prod]
+region = eu-central-1
+output = json
