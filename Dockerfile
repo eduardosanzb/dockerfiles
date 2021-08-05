@@ -42,6 +42,7 @@ RUN apt-get update && \
   npm \
   xclip \
   apt-transport-https \
+  screen \
   ca-certificates \ 
   software-properties-common \
   fonts-powerline \
