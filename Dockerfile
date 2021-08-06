@@ -18,7 +18,6 @@ ENV NVM_DIR /usr/local/nvm
 ENV NODE_VERSION node
 ENV NVM_INSTALL_PATH $NVM_DIR/versions/node/v$NODE_VERSION
 
-
 RUN echo $USER_NAME
 RUN echo $USER_PASSWORD
 RUN echo $CONTAINER_IMAGE_VER
@@ -28,12 +27,12 @@ RUN apt-get update && \
   apt-get install -y sudo \
   vim \
   curl \
+  awscli \
   git-core \
   gnupg \
   vim-gui-common \
   vim-runtime \
   locales \
-  awscli \
   nodejs \
   zsh \
   wget \
@@ -53,7 +52,10 @@ RUN apt-get update && \
   # add a user (--disabled-password: the user won't be able to use the account until the password is set)
   && adduser --quiet --disabled-password --shell /bin/zsh --home /home/$USER_NAME --gecos "User" $USER_NAME \
   # update the password
-  && echo "${USER_NAME}:${USER_PASSWORD}" | chpasswd && usermod -aG sudo $USER_NAME
+  && echo "${USER_NAME}:${USER_PASSWORD}" | chpasswd && usermod -aG sudo $USER_NAME 
+
+
+RUN ln -s /usr/bin/python3 /usr/bin/python
 
 ################################
 # setting default language
@@ -61,18 +63,18 @@ RUN apt-get update && \
 ENV LANG C.UTF-8
 ENV LC_ALL C.UTF-8
 
-# RUN pip install pipx
- ENV PATH=/root/.local/bin:$PATH
 
-# RUN pipx install awsume \
-#      && pipx inject awsume awsume-console-plugin \
-#      && awsume-configure --shell zsh --autocomplete-file ~/.zshrc --alias-file ~/.zshrc
+ENV PATH=/root/.local/bin:/home/$USER_NAME/.local/bin:$PATH
+################################
+# Installing AWS related
+################################
+RUN pip3 --no-cache-dir install --upgrade --user awscli 
+RUN pip3 install awsume
 
-RUN sudo pip install awsume \
-     &&  awsume-configure --shell zsh --autocomplete-file ~/.zshrc --alias-file ~/.zshrc
-
+################################
+# Installing kubectl
+################################
 COPY --from=lachlanevenson/k8s-kubectl /usr/local/bin/kubectl /usr/local/bin/kubectl
-
 ################################
 # Install eks
 ################################
@@ -89,6 +91,7 @@ RUN npm install -g yarn
 ################################
 RUN rm /bin/sh && ln -s /bin/bash /bin/sh
 RUN curl --silent -o- https://raw.githubusercontent.com/creationix/nvm/master/install.sh | bash 
+
 
 ################################
 # Install node and npm
@@ -143,6 +146,10 @@ COPY aws /home/$USER_NAME/.aws
 # install vim plugins
 RUN git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
 RUN vim +PlugInstall +qall
+RUN pip install --upgrade --user awscli
+
+
+ENV PATH=/root/.local/bin:/home/$USER_NAME/.local/bin:/usr/local/bin:$PATH
 
 
 # start zsh
