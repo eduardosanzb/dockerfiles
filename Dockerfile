@@ -15,7 +15,7 @@ ENV CONTAINER_IMAGE_VER=v1.0.0
 # nvm environment variables
 RUN mkdir /usr/local/nvm
 ENV NVM_DIR /usr/local/nvm
-ENV NODE_VERSION node
+ENV NODE_VERSION V14.17.0
 ENV NVM_INSTALL_PATH $NVM_DIR/versions/node/v$NODE_VERSION
 
 RUN echo $USER_NAME
@@ -92,14 +92,14 @@ RUN npm install -g yarn
 RUN rm /bin/sh && ln -s /bin/bash /bin/sh
 RUN curl --silent -o- https://raw.githubusercontent.com/creationix/nvm/master/install.sh | bash 
 
-
 ################################
 # Install node and npm
 ################################
 RUN .  $NVM_DIR/nvm.sh \
-   && nvm install $NODE_VERSION \
-   && nvm alias default $NODE_VERSION \
-   && nvm use default
+  && nvm install $NODE_VERSION \
+  && nvm alias default $NODE_VERSION \
+  && nvm use default \
+  && source /usr/local/nvm/nvm.sh
 
 ENV NODE_PATH $NVM_INSTALL_PATH/lib/node_modules
 ENV PATH $NVM_INSTALL_PATH/bin:$PATH
@@ -115,14 +115,14 @@ RUN sudo curl -L https://github.com/hasura/graphql-engine/raw/master/cli/get.sh 
 ################################
 RUN wget --progress=dot:mega https://releases.hashicorp.com/terraform/${TERRAFORM_VERSION}/terraform_${TERRAFORM_VERSION}_linux_amd64.zip
 RUN \
-	# Unzip
-	unzip terraform_${TERRAFORM_VERSION}_linux_amd64.zip && \
-	# Move to local bin
-	mv terraform /usr/local/bin/ && \
-	# Make it executable
-	chmod +x /usr/local/bin/terraform && \
-	# Check that it's installed
-	terraform --version
+  # Unzip
+  unzip terraform_${TERRAFORM_VERSION}_linux_amd64.zip && \
+  # Move to local bin
+  mv terraform /usr/local/bin/ && \
+  # Make it executable
+  chmod +x /usr/local/bin/terraform && \
+  # Check that it's installed
+  terraform --version
 
 
 ################################
