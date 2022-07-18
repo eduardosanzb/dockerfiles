@@ -15,7 +15,7 @@ ENV CONTAINER_IMAGE_VER=v1.0.0
 # nvm environment variables
 RUN mkdir /usr/local/nvm
 ENV NVM_DIR /usr/local/nvm
-ENV NODE_VERSION V14.17.0
+ENV NODE_VERSION 17
 ENV NVM_INSTALL_PATH $NVM_DIR/versions/node/v$NODE_VERSION
 
 RUN echo $USER_NAME
@@ -141,7 +141,7 @@ COPY gitconfig /home/$USER_NAME/.gitconfig
 COPY vimrc /home/$USER_NAME/.vimrc
 COPY ssh /home/$USER_NAME/.ssh
 # COPY zshrc /home/$USER_NAME/.zshrc
-COPY aws /home/$USER_NAME/.aws
+# COPY aws /home/$USER_NAME/.aws
 
 # install vim plugins
 RUN git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
