@@ -25,10 +25,10 @@ map('', '<leader>h', ':wincmd h<CR>')
 map('', '<leader>l', ':wincmd l<CR>')
 map('', '<leader>j', ':wincmd j<CR>')
 map('', '<leader>k', ':wincmd k<CR>')
-    -- swap splits
-map('n', '<leader>ws', '<C-w><C-r>')
+map('n', '<leader>ws', '<C-w><C-r>') -- swap splits
     -- Focus on window custom function
 map('', '<leader>wf', ':lua EduardoSanzbWindowFocus()<CR>')
+
 
 -- Reload configuration without restart nvim
 map('n', '<leader>r', ':so %<CR>')
@@ -47,4 +47,3 @@ map('', "<leader>ps", ":lua require('telescope.builtin').grep_string({ search = 
 map('', "<leader>ff", ":lua require('telescope.builtin').find_files()<CR>")
 map('', "<leader>fg", ":lua require('telescope.builtin').live_grep()<CR>")
 map('', "<leader>fh", ":lua require('telescope.builtin').help_tags()<CR>")
-map('', "<leader>km", ":lua require('telescope.builtin').keymaps()<CR>")

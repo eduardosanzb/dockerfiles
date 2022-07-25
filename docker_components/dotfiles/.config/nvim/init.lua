@@ -15,4 +15,4 @@ require('plugins/nvim-treesitter')
 require('plugins/treesitter-context')
 
 
-require('eduardosanzb')
+require('eduardosanzb/nvim-focus')

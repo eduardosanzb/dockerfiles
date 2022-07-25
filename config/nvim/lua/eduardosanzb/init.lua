@@ -1,0 +1,1 @@
+require('eduardosanzb.nvim-focus')

@@ -1,0 +1,19 @@
+version: '3.7'
+
+services:
+  server:
+    image: eduardosanzb/test
+    build:
+      context: .
+      args:
+        USER_ID: ${UID:-1000}
+        # GROUP_ID: ${GID:-1000}
+        GROUP_ID: 1000
+        USER_NAME: 'eduardosanzb'
+        USER_PASSWORD: 'password'
+        GIT_USER_NAME: 'eduardo sanchez bautista'
+        GIT_USER_EMAIL: 'eduardosanzb@gmail.com'
+    environment:
+      UID:
+      GID:
+

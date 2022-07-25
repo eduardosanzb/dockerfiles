@@ -1,13 +1,13 @@
 -- colours and fonts
 vim.opt.background = 'dark'
-vim.cmd('colorscheme solarized')
+vim.cmd('colorscheme gruvbox')
 vim.cmd('syntax enable')
-vim.cmd('highlight ColorColumn ctermbg=1 guibg=red')
 
-local statusGruv, gruvbox = pcall(require, 'gruvbox')
-if not statusGruv then
+local status_ok, gruvbox = pcall(require, 'gruvbox')
+if not status_ok then
 	return
 end
+
 
 gruvbox.setup({
     undercurl = true,

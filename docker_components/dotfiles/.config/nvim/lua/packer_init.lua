@@ -29,9 +29,7 @@ if not status_ok then
 end
 
 return packer.startup({function(use)
-  -- packer can manage itself
-  use 'wbthomason/packer.nvim'
-
+  use 'wbthomason/packer.nvim' -- packer can manage itself
   -- File explorer
   use 'kyazdani42/nvim-tree.lua'
   use 'kyazdani42/nvim-web-devicons'
@@ -65,7 +63,6 @@ return packer.startup({function(use)
   -- Color schemes
   use 'navarasu/onedark.nvim'
   use 'ellisonleao/gruvbox.nvim'
-  use 'https://gitlab.com/HiPhish/resolarized.nvim.git'
 
   -- shadow of multiwindows
   use 'sunjon/shade.nvim'
@@ -113,7 +110,6 @@ return packer.startup({function(use)
     'goolord/alpha-nvim',
     requires = { 'kyazdani42/nvim-web-devicons' },
   }
-
 
   -- Automatically set up your configuration after cloning packer.nvim
   -- Put this at the end after all plugins
