@@ -1,6 +1,6 @@
 -- colours and fonts
 vim.opt.background = 'dark'
-vim.cmd('colorscheme solarized')
+vim.cmd('colorscheme gruvbox')
 vim.cmd('syntax enable')
 vim.cmd('highlight ColorColumn ctermbg=1 guibg=red')
 
