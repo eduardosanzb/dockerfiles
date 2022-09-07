@@ -1,10 +1,8 @@
-export ZSH="/home/eduardosanzb/.oh-my-zsh"
-export LANG=en_US.UTF-8
+export ZSH=$HOME/.oh-my-zsh
 
 # ZSH_THEME="pure"
 
 CASE_SENSITIVE="true"
-
 
 export UPDATE_ZSH_DAYS=13
 
@@ -27,9 +25,11 @@ plugins=(
   complwtation
 )
 
-source $ZSH/oh-my-zsh.sh
+#source $ZSH/oh-my-zsh.sh
 
 alias tmux="TERM=screen-256color-bce tmux"
 alias dco="docker-compose"
 alias tf="terraform"
 alias gitclean="git branch | grep -v "master" | xargs git branch -D "
+autoload bashcompinit && bashcompinit
+

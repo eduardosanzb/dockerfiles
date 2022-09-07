@@ -108,6 +108,10 @@ return packer.startup({function(use)
     end
   }
 
+  -- git viewer and helpers
+  use { 'sindrets/diffview.nvim', requires = 'nvim-lua/plenary.nvim' }
+
+
   -- Dashboard (start screen)
   use {
     'goolord/alpha-nvim',
@@ -119,6 +123,9 @@ return packer.startup({function(use)
 
   use { "rcarriga/nvim-dap-ui", requires = {"mfussenegger/nvim-dap"} }
 
+
+  -- Markdown preview
+  use {"ellisonleao/glow.nvim"}
 
   -- Automatically set up your configuration after cloning packer.nvim
   -- Put this at the end after all plugins
