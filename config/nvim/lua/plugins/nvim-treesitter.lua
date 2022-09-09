@@ -29,4 +29,5 @@ nvim_treesitter.setup {
 vim.api.nvim_exec([[
   set foldmethod=expr
   set foldexpr=nvim_treesitter#foldexpr()
+  set foldlevel=99
 ]], true)

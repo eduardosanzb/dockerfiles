@@ -97,15 +97,6 @@ Language servers setup:
 For language servers list see:
 https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md
 
-Bash --> bashls
-https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md#bashls
-
-Python --> pyright
-https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md#pyright
-
-C-C++ --> clangd
-https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md#clangd
-
 HTML/CSS/JSON --> vscode-html-languageserver
 https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md#html
 
@@ -124,7 +115,7 @@ end
 -- Use a loop to conveniently call 'setup' on multiple servers and
 -- map buffer local keybindings when the language server attaches.
 -- Add your language server below:
-local servers = { 'bashls', 'pyright', 'clangd', 'html', 'cssls', 'tsserver', 'gopls', 'graphql' }
+local servers = { 'bashls', 'pyright', 'clangd', 'html', 'cssls', 'tsserver', 'gopls', 'graphql', 'denols' }
 
 -- Call setup
 for _, lsp in ipairs(servers) do
@@ -138,4 +129,16 @@ for _, lsp in ipairs(servers) do
     }
   }
 end
+
+
+vim.g.markdown_fenced_languages = {
+      "ts=typescript"
+}
+
+lspconfig.tsserver.setup{
+    root_dir = lspconfig.util.root_pattern("package.json")
+}
+lspconfig.denols.setup {
+    root_dir = lspconfig.util.root_pattern("deno.json"),
+}
 

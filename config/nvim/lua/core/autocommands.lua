@@ -52,12 +52,17 @@ autocmd('BufLeave', {
   command = 'stopinsert'
 })
 
-autocmd('BufReadPost', {
-    pattern = '*',
-    command = 'normal zR'
-})
 
+-- For the folding being open by default
+
+augroup('open_folds', { clear = true })
+autocmd('BufReadPost', {
+    group = 'open_folds',
+    command = 'normal zR',
+    pattern = '*'
+})
 autocmd('FileReadPost', {
-    pattern = '*',
-    command = 'normal zR'
+    group = 'open_folds',
+    command = 'normal zR',
+    pattern = '*'
 })

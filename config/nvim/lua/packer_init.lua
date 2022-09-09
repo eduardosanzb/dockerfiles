@@ -82,6 +82,7 @@ return packer.startup({function(use)
       'hrsh7th/cmp-path',
       'hrsh7th/cmp-buffer',
       'saadparwaiz1/cmp_luasnip',
+      'hrsh7th/vim-vsnip'
     },
   }
 
