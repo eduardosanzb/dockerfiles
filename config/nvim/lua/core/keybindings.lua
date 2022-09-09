@@ -25,10 +25,11 @@ map('', '<leader>h', ':wincmd h<CR>')
 map('', '<leader>l', ':wincmd l<CR>')
 map('', '<leader>j', ':wincmd j<CR>')
 map('', '<leader>k', ':wincmd k<CR>')
-    -- swap splits
-map('n', '<leader>ws', '<C-w><C-r>')
-    -- Focus on window custom function
-map('', '<leader>wf', ':lua EduardoSanzbWindowFocus()<CR>')
+
+map('n', '<leader>we', '<C-w><C-=>')
+map('n', '<leader>ws', '<C-w><C-r>') -- swap splits
+map('', '<leader>wf', ':lua EduardoSanzbWindowFocus()<CR>') -- Focus on window custom function
+
 
 -- Reload configuration without restart nvim
 map('n', '<leader>r', ':so %<CR>')
@@ -49,3 +50,14 @@ map('', "<leader>fg", ":lua require('telescope.builtin').live_grep()<CR>")
 map('', "<leader>fh", ":lua require('telescope.builtin').help_tags()<CR>")
 map('', "<leader>km", ":lua require('telescope.builtin').keymaps()<CR>")
 map('', "<leader>fr", ":lua require('telescope.builtin').resume()<CR>")
+map('', "<leader>gi", ":lua require('telescope.builtin').lsp_implementations()<CR>")
+
+-- Git
+map('', "<leader>gd", ":DiffviewOpen<CR>")
+map('', "<leader>gc", ":DiffviewClose<CR>")
+map('', "<leader>gt", ":DiffviewFileHistory<CR>")
+
+
+
+-- markdown
+map('n', '<leader>md', ":Glow<CR>")

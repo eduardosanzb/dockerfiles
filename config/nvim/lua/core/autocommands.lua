@@ -52,3 +52,12 @@ autocmd('BufLeave', {
   command = 'stopinsert'
 })
 
+autocmd('BufReadPost', {
+    pattern = '*',
+    command = 'normal zR'
+})
+
+autocmd('FileReadPost', {
+    pattern = '*',
+    command = 'normal zR'
+})

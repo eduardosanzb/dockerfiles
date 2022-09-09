@@ -1,11 +1,11 @@
 [user]
-  name = eduardosanzb
+  name = eduardo.bautista
   email = eduardosanzb@gmail.com
 [alias]
+  s = status
   a = add
   ca= commit -a
   cam = commit -am
-  s = status
   pom = push origin master
   cob = checkout -b
   l = checkout -

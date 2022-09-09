@@ -14,7 +14,7 @@ nvim_treesitter.setup {
   -- A list of parser names, or "all"
   ensure_installed = {
     'bash', 'css', 'html', 'javascript', 'json', 'lua',
-    'typescript', 'vim', 'go', 'graphql'
+    'typescript', 'vim', 'go', 'graphql', 'yaml'
    },
 
   -- Install parsers synchronously (only applied to `ensure_installed`)
@@ -25,3 +25,8 @@ nvim_treesitter.setup {
   },
 }
 
+--folding based on treesitter
+vim.api.nvim_exec([[
+  set foldmethod=expr
+  set foldexpr=nvim_treesitter#foldexpr()
+]], true)

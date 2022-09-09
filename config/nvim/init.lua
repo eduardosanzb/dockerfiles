@@ -14,6 +14,7 @@ require('plugins/nvim-lspconfig')
 require('plugins/nvim-tree')
 require('plugins/nvim-treesitter')
 require('plugins/treesitter-context')
+require('plugins/gitsigns')
 
 require('plugins/mason')
 require('plugins/nvim-dap')
