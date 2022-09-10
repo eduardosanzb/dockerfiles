@@ -66,6 +66,7 @@ return packer.startup({function(use)
   use 'navarasu/onedark.nvim'
   use 'ellisonleao/gruvbox.nvim'
   use 'https://gitlab.com/HiPhish/resolarized.nvim.git'
+  use { "catppuccin/nvim", as = "catppuccin" }
 
   -- shadow of multiwindows
   use 'sunjon/shade.nvim'
