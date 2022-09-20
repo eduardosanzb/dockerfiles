@@ -2,16 +2,6 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-	<key>AppleAntiAliasingThreshold</key>
-	<integer>1</integer>
-	<key>ApplePressAndHoldEnabled</key>
-	<false/>
-	<key>AppleScrollAnimationEnabled</key>
-	<integer>0</integer>
-	<key>AppleSmoothFixedFontsSizeThreshold</key>
-	<integer>1</integer>
-	<key>AppleWindowTabbingMode</key>
-	<string>manual</string>
 	<key>Default Bookmark Guid</key>
 	<string>FD6B7272-D4EC-4552-9405-29C741C279A4</string>
 	<key>DisableFullscreenTransparency</key>
@@ -31,23 +21,60 @@
 			<key>Text</key>
 			<string></string>
 		</dict>
-		<key>0x68-0x100000-0x4</key>
+		<key>0x68-0x40000-0x4</key>
 		<dict>
 			<key>Action</key>
-			<integer>31</integer>
+			<integer>18</integer>
 			<key>Label</key>
 			<string></string>
 			<key>Text</key>
 			<string></string>
+			<key>Version</key>
+			<integer>0</integer>
 		</dict>
-		<key>0x6c-0x100000-0x25</key>
+		<key>0x6a-0x40000-0x26</key>
 		<dict>
 			<key>Action</key>
-			<integer>30</integer>
+			<integer>21</integer>
 			<key>Label</key>
 			<string></string>
 			<key>Text</key>
 			<string></string>
+			<key>Version</key>
+			<integer>1</integer>
+		</dict>
+		<key>0x6b-0x100000-0x28</key>
+		<dict>
+			<key>Action</key>
+			<integer>12</integer>
+			<key>Label</key>
+			<string></string>
+			<key>Text</key>
+			<string>clear\n</string>
+			<key>Version</key>
+			<integer>1</integer>
+		</dict>
+		<key>0x6b-0x40000-0x28</key>
+		<dict>
+			<key>Action</key>
+			<integer>20</integer>
+			<key>Label</key>
+			<string></string>
+			<key>Text</key>
+			<string></string>
+			<key>Version</key>
+			<integer>1</integer>
+		</dict>
+		<key>0x6c-0x40000-0x25</key>
+		<dict>
+			<key>Action</key>
+			<integer>19</integer>
+			<key>Label</key>
+			<string></string>
+			<key>Text</key>
+			<string></string>
+			<key>Version</key>
+			<integer>0</integer>
 		</dict>
 		<key>0x9-0x40000</key>
 		<dict>
@@ -403,7 +430,7 @@
 			<key>Custom Command</key>
 			<string>No</string>
 			<key>Custom Directory</key>
-			<string>No</string>
+			<string>Recycle</string>
 			<key>Default Bookmark</key>
 			<string>No</string>
 			<key>Description</key>

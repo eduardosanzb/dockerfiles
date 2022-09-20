@@ -19,7 +19,7 @@ gitsigns.setup {
     word_diff  = false, -- Toggle with `:Gitsigns toggle_word_diff
     current_line_blame = true,
     current_line_blame_opts = {
-        delay = 100
+        delay = 500
     }
 }
 

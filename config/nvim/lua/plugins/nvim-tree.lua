@@ -31,7 +31,7 @@ nvim_tree.setup {
   respect_buf_cwd = false,
   update_cwd = true,
   view = {
-    width = 32,
+    width = 50,
     height = 30,
     hide_root_folder = false,
     side = "left",
@@ -99,7 +99,7 @@ nvim_tree.setup {
   },
   hijack_directories = {
     enable = true,
-    auto_open = true,
+    auto_open = false,
   },
   update_focused_file = {
     enable = true,

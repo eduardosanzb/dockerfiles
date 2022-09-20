@@ -4,7 +4,7 @@ vim.opt.relativenumber = true
 vim.opt.autoindent = true
 vim.opt.smarttab = true
 
-local indent = 4
+local indent = 2
 
 vim.opt.tabstop = indent
 vim.opt.shiftwidth = indent
@@ -20,7 +20,7 @@ vim.opt.exrc = true
 vim.opt.hidden = true
 
 -- vim.wo.noerrorbells
-vim.cmd('set nowrap' )
+vim.cmd('set wrap' )
 
 -- " TODO
 -- " For the seatch?

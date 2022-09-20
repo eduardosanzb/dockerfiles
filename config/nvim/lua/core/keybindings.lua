@@ -34,7 +34,7 @@ map('', '<leader>wf', ':lua EduardoSanzbWindowFocus()<CR>') -- Focus on window c
 
 
 -- Reload configuration without restart nvim
-map('n', '<leader>r', ':so %<CR>')
+map('n', '<leader>ro', ':so %<CR>')
 
 -- Terminal --
 map('n', '<leader>t', ':belowright sp term://zsh<CR>', { noremap = true })
@@ -42,21 +42,30 @@ map('n', '<leader>vt', ':belowright vs term://zsh<CR>', { noremap = true })
 map('t', '<Esc>', '<C-\\><C-n><CR>')
 
 -- Plugins --
-    -- TreeSitter
-map('', '<tab>', ":NvimTreeToggle<CR>")
+  -- TreeSitter
+map('', '<tab>', ":lua require('nvim-tree').toggle(false, true)<CR>")
+map('', '<leader><tab>', ":lua require('nvim-tree').focus()<CR>")
 map('', '<leader>e', ":norm zR<CR>")
 
-    -- Telescope
+  -- Telescope
+    -- files
 map('', "<leader>ps", ":lua require('telescope.builtin').grep_string({ search = vim.fn.input('Grep For >')})<CR>")
 map('', "<leader>ff", ":lua require('telescope.builtin').find_files()<CR>")
 map('', "<leader>fg", ":lua require('telescope.builtin').live_grep()<CR>")
 map('', "<leader>fh", ":lua require('telescope.builtin').help_tags()<CR>")
 map('', "<leader>km", ":lua require('telescope.builtin').keymaps()<CR>")
 map('', "<leader>fr", ":lua require('telescope.builtin').resume()<CR>")
+map('', "<leader>fo", ":Telescope oldfiles<CR>")
+    -- lsp
 map('', "<leader>gi", ":lua require('telescope.builtin').lsp_implementations()<CR>")
 map('', "<leader>gD", ":lua require('telescope.builtin').lsp_type_definitions()<CR>")
 map('', "<leader>gd", ":lua require('telescope.builtin').lsp_definitions()<CR>")
-map('', "<leader>fo", ":Telescope oldfiles<CR>")
+map('', "<leader>gr", ":lua require('telescope.builtin').lsp_references()<CR>")
+map('', "<leader>gs", ":lua require('telescope.builtin').lsp_document_symbols()<CR>")
+map('', "<leader>rn", ":lua vim.lsp.buf.rename()<CR>")
+map('', "<space>f",   ":lua vim.lsp.buf.formatting()<CR>")
+map('n', 'K',         ':lua vim.lsp.buf.hover()<CR>')
+map('n', '<space>ca', ':lua vim.lsp.buf.code_action()<CR>')
 
 -- Git
 map('', "<leader>do", ":DiffviewOpen<CR>")
@@ -67,5 +76,6 @@ map('', "<leader>dh", ":DiffviewFileHistory<CR>")
 map('n', '<leader>md', ":Glow<CR>")
 
 -- colorscheme
-map('n', '<leader>cd', ':colorscheme gruvbox<CR>')
-map('n', '<leader>cl', ':colorscheme solarized-light<CR>')
+map('n', '<leader>cd', ':Catppuccin frappe<CR>')
+map('n', '<leader>cl', ':Catppuccin latte<CR>')
+

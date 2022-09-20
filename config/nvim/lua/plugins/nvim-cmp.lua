@@ -64,14 +64,18 @@ cmp.setup {
     end
   },
 
-  -- Load sources, see: https://github.com/topics/nvim-cmp
   sources = {
-    { name = 'vsnip'},
-    { name = 'nvim_lsp' },
     { name = 'luasnip' },
+    { name = 'nvim_lsp' },
     { name = 'path' },
     { name = 'buffer' },
   },
 }
 
+require("luasnip.loaders.from_vscode").lazy_load({ paths = { "/Users/eduardo.bautista/.config/nvim/lua/eduardosanzb/snippets" } })
+require("luasnip.loaders.from_vscode").lazy_load()
 
+local capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
+require('lspconfig')['denols'].setup {
+  capabilities = capabilities
+}

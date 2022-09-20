@@ -1,0 +1,15 @@
+{
+	"name": "eduardo snippets",
+	"contributes": {
+		"snippets": [
+			{
+				"language": [
+					"javascript",
+          "typescript",
+          "deno"
+				],
+				"path": "./js.json"
+			}
+		]
+	}
+}
