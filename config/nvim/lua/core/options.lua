@@ -20,7 +20,7 @@ vim.opt.exrc = true
 vim.opt.hidden = true
 
 -- vim.wo.noerrorbells
-vim.cmd('set wrap' )
+vim.cmd('set nowrap' )
 
 -- " TODO
 -- " For the seatch?

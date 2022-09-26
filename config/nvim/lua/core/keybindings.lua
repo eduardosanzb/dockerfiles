@@ -45,6 +45,9 @@ map('t', '<Esc>', '<C-\\><C-n><CR>')
   -- TreeSitter
 map('', '<tab>', ":lua require('nvim-tree').toggle(false, true)<CR>")
 map('', '<leader><tab>', ":lua require('nvim-tree').focus()<CR>")
+map("n", "<leader>mn", ":lua require('nvim-tree.api').marks.navigate.next()<CR>")
+map("n", "<leader>mp", ":lua require('nvim-tree.api').marks.navigate.prev()<CR>")
+map("n", "<leader>ms", ":lua require('nvim-tree.api').marks.navigate.select()<CR>")
 map('', '<leader>e', ":norm zR<CR>")
 
   -- Telescope

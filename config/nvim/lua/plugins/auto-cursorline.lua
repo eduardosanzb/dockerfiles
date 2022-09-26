@@ -14,4 +14,4 @@ end
 
 authCursorline.setup{
    wait_ms = 0,
-}
+ }

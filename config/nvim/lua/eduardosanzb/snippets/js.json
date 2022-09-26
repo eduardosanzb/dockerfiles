@@ -1,9 +1,16 @@
 
 {
-  "console": {
+  "console-obj": {
     "prefix": ["clg"],
     "body": [
       "console.log({ $1 })"
+    ],
+    "description": "Console.log with object"
+  },
+  "console": {
+    "prefix": ["cln"],
+    "body": [
+      "console.log($1)"
     ],
     "description": "Console.log with object"
   }

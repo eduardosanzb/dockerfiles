@@ -51,6 +51,7 @@ capabilities.textDocument.completion.completionItem.resolveSupport = {
 -- after the language server attaches to the current buffer
 local on_attach = function(client, bufnr)
   local function buf_set_keymap(...) vim.api.nvim_buf_set_keymap(bufnr, ...) end
+
   local function buf_set_option(...) vim.api.nvim_buf_set_option(bufnr, ...) end
 
   -- Highlighting references
@@ -83,7 +84,6 @@ local on_attach = function(client, bufnr)
   buf_set_keymap('n', '<space>rn', ':lua vim.lsp.buf.rename()<CR>', opts)
   buf_set_keymap('n', '<space>ca', ':lua vim.lsp.buf.code_action()<CR>', opts)
   buf_set_keymap('n', 'gr', ':lua vim.lsp.buf.references()<CR>', opts)
-  buf_set_keymap('n', '<space>e', ':lua vim.lsp.diagnostic.show_line_diagnostics()<CR>', opts)
   buf_set_keymap('n', '[d', ':lua vim.lsp.diagnostic.goto_prev()<CR>', opts)
   buf_set_keymap('n', ']d', ':lua vim.lsp.diagnostic.goto_next()<CR>', opts)
   buf_set_keymap('n', '<space>q', ':lua vim.lsp.diagnostic.set_loclist()<CR>', opts)
@@ -100,7 +100,8 @@ end
 -- Use a loop to conveniently call 'setup' on multiple servers and
 -- map buffer local keybindings when the language server attaches.
 -- Add your language server below:
-local servers = { 'bashls', 'pyright', 'clangd', 'html', 'cssls', 'tsserver', 'gopls', 'graphql', 'denols' }
+local servers = { 'bashls', 'pyright', 'clangd', 'html', 'cssls', 'tsserver', 'gopls', 'graphql', 'denols', 'sumneko_lua',
+  'jsonls' }
 
 -- Call setup
 for _, lsp in ipairs(servers) do
@@ -117,13 +118,14 @@ end
 
 
 vim.g.markdown_fenced_languages = {
-      "ts=typescript"
+  "ts=typescript"
 }
 
-lspconfig.tsserver.setup{
-    root_dir = lspconfig.util.root_pattern("package.json")
+lspconfig.tsserver.setup {
+  on_attach = on_attach,
+  root_dir = lspconfig.util.root_pattern("package.json")
 }
 lspconfig.denols.setup {
-    root_dir = lspconfig.util.root_pattern("deno.json"),
+  on_attach = on_attach,
+  root_dir = lspconfig.util.root_pattern("deno.json"),
 }
-
