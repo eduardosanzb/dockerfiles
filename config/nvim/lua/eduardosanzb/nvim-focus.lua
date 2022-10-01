@@ -18,7 +18,6 @@ function FocusCurrentWindow()
     local win = vim.api.nvim_open_win(buf, 1, opts)
     local file_path = vim.api.nvim_get_runtime_file(myPath, false)[1]
 
-    print(vim.inspect(myPath))
     vim.api.nvim_command(":edit" .. myPath)
 
 end

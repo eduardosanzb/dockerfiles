@@ -39,7 +39,7 @@ map('n', '<leader>ro', ':so %<CR>')
 -- Terminal --
 map('n', '<leader>t', ':belowright sp term://zsh<CR>', { noremap = true })
 map('n', '<leader>vt', ':belowright vs term://zsh<CR>', { noremap = true })
-map('t', '<Esc>', '<C-\\><C-n><CR>')
+map('t', '<leader><Esc>', '<C-\\><C-n><CR>')
 
 -- Plugins --
   -- TreeSitter

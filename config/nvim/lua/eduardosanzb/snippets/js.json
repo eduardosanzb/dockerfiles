@@ -8,7 +8,7 @@
     "description": "Console.log with object"
   },
   "console": {
-    "prefix": ["cln"],
+    "prefix": ["clgn"],
     "body": [
       "console.log($1)"
     ],
