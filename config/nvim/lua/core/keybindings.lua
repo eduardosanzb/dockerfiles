@@ -27,7 +27,6 @@ map('', '<leader>j', ':wincmd j<CR>')
 map('', '<leader>k', ':wincmd k<CR>')
 map('', '<leader>pf', ':wincmd_ | wincmd|<CR>')
 
-
 map('n', '<leader>we', '<C-w><C-=>')
 map('n', '<leader>ws', '<C-w><C-r>') -- swap splits
 map('', '<leader>wf', ':lua EduardoSanzbWindowFocus()<CR>') -- Focus on window custom function
@@ -36,10 +35,13 @@ map('', '<leader>wf', ':lua EduardoSanzbWindowFocus()<CR>') -- Focus on window c
 -- Reload configuration without restart nvim
 map('n', '<leader>ro', ':so %<CR>')
 
+-- paste --
+map('', '<leader>cp', ":w !pbcopy<CR>")
+
 -- Terminal --
 map('n', '<leader>t', ':belowright sp term://zsh<CR>', { noremap = true })
 map('n', '<leader>vt', ':belowright vs term://zsh<CR>', { noremap = true })
-map('t', '<leader><Esc>', '<C-\\><C-n><CR>')
+map('t', '<C-Esc>', '<C-\\><C-n><CR>')
 
 -- Plugins --
   -- TreeSitter
@@ -54,7 +56,10 @@ map('', '<leader>e', ":norm zR<CR>")
     -- files
 map('', "<leader>ps", ":lua require('telescope.builtin').grep_string({ search = vim.fn.input('Grep For >')})<CR>")
 map('', "<leader>ff", ":lua require('telescope.builtin').find_files()<CR>")
-map('', "<leader>fg", ":lua require('telescope.builtin').live_grep()<CR>")
+
+-- map('', "<leader>fg", ":lua require('telescope.builtin').live_grep()<CR>")
+map("", "<leader>fg", ":lua require('telescope').extensions.live_grep_args.live_grep_args()<CR>")
+
 map('', "<leader>fh", ":lua require('telescope.builtin').help_tags()<CR>")
 map('', "<leader>km", ":lua require('telescope.builtin').keymaps()<CR>")
 map('', "<leader>fr", ":lua require('telescope.builtin').resume()<CR>")

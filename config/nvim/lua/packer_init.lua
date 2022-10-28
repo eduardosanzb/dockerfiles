@@ -5,8 +5,8 @@ local install_path = fn.stdpath('data') .. '/site/pack/packer/start/packer.nvim'
 if fn.empty(fn.glob(install_path)) > 0 then
   packer_bootstrap = fn.system({
     'git',
-k   'clone',
-o   '--depth',
+    k 'clone',
+    o '--depth',
     '1',
     'https://github.com/wbthomason/packer.nvim',
     install_path
@@ -59,9 +59,8 @@ return packer.startup({ function(use)
 
   use {
     'nvim-telescope/telescope.nvim', tag = '0.1.0',
-    requires = { { 'nvim-lua/plenary.nvim' } }
+    requires = { { 'nvim-lua/plenary.nvim' }, { "nvim-telescope/telescope-live-grep-args.nvim" }, }
   }
-
   -- Color schemes
   use 'navarasu/onedark.nvim'
   use 'ellisonleao/gruvbox.nvim'
@@ -75,6 +74,8 @@ return packer.startup({ function(use)
 
   -- LSP
   use 'neovim/nvim-lspconfig'
+  -- LSP plugin for typescript
+  use 'jose-elias-alvarez/typescript.nvim'
 
   -- Autocomplete
   use {
