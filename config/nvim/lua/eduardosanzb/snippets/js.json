@@ -13,5 +13,13 @@
       "console.log($1)"
     ],
     "description": "Console.log with object"
+  },
+  "console-inspect":{
+    "prefix": ["clgi"],
+    "body": [
+      "console.log(inspect($1, false, 1000))"
+    ],
+    "description": "Console.log with inspect"
+
   }
 }

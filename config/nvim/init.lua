@@ -21,6 +21,7 @@ require('plugins/nvim-treesitter')
 require('plugins/treesitter-context')
 require('plugins/glow-nvim')
 require('plugins/auto-cursorline')
+require('plugins/leap')
 
 
 require('eduardosanzb')

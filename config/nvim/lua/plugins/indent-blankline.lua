@@ -24,7 +24,6 @@ indent_blankline.setup {
     'help',
     'dashboard',
     'git',
-    'markdown',
     'text',
     'terminal',
     'lspinfo',

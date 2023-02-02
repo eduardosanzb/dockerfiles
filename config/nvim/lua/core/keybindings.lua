@@ -50,7 +50,7 @@ map('', '<leader><tab>', ":lua require('nvim-tree').focus()<CR>")
 map("n", "<leader>mn", ":lua require('nvim-tree.api').marks.navigate.next()<CR>")
 map("n", "<leader>mp", ":lua require('nvim-tree.api').marks.navigate.prev()<CR>")
 map("n", "<leader>ms", ":lua require('nvim-tree.api').marks.navigate.select()<CR>")
-map('', '<leader>e', ":norm zR<CR>")
+map('', '<leader>ex', ":norm zR<CR>")
 
   -- Telescope
     -- files
@@ -87,3 +87,5 @@ map('n', '<leader>md', ":Glow<CR>")
 map('n', '<leader>cd', ':Catppuccin frappe<CR>')
 map('n', '<leader>cl', ':Catppuccin latte<CR>')
 
+-- Liveplatform
+map('n', '<leader>fp', ':!yarn format<CR>')

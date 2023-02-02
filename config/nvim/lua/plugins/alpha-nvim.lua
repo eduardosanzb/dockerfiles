@@ -58,6 +58,7 @@ dashboard.section.buttons.val = {
   dashboard.button('s', '  Settings', ':e $MYVIMRC<CR>'),
   dashboard.button('u', '  Update plugins', ':PackerUpdate<CR>'),
   dashboard.button('q', '  Quit', ':qa<CR>'),
+  dashboard.button('i', '  Github issues', ':Octo issue list<CR>')
 }
 
 dashboard.section.footer.val = footer()

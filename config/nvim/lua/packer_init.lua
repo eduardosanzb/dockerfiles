@@ -5,8 +5,8 @@ local install_path = fn.stdpath('data') .. '/site/pack/packer/start/packer.nvim'
 if fn.empty(fn.glob(install_path)) > 0 then
   packer_bootstrap = fn.system({
     'git',
-    k 'clone',
-    o '--depth',
+    'clone',
+    '--depth',
     '1',
     'https://github.com/wbthomason/packer.nvim',
     install_path
@@ -76,6 +76,11 @@ return packer.startup({ function(use)
   use 'neovim/nvim-lspconfig'
   -- LSP plugin for typescript
   use 'jose-elias-alvarez/typescript.nvim'
+  use 'jose-elias-alvarez/null-ls.nvim'
+  use 'MunifTanjim/eslint.nvim'
+  use('MunifTanjim/prettier.nvim')
+
+  use 'sigmasd/deno-nvim'
 
   -- Autocomplete
   use {
@@ -94,6 +99,8 @@ return packer.startup({ function(use)
   use "rafamadriz/friendly-snippets"
 
 
+  -- Search in file using less chars
+  use "ggandor/leap.nvim"
 
   -- Comment toggler
   use {
@@ -155,6 +162,17 @@ return packer.startup({ function(use)
     end
   }
 
+  use {
+    'pwntester/octo.nvim',
+    requires = {
+      'nvim-lua/plenary.nvim',
+      'nvim-telescope/telescope.nvim',
+      'kyazdani42/nvim-web-devicons',
+    },
+    config = function()
+      require "octo".setup()
+    end
+  }
   -- Automatically set up your configuration after cloning packer.nvim
   -- Put this at the end after all plugins
   if packer_bootstrap then
@@ -169,3 +187,4 @@ end,
     }
   }
 })
+
