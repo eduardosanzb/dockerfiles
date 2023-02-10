@@ -1,7 +1,7 @@
 -- colours and fonts
-vim.opt.background = 'dark'
-vim.cmd('colorscheme catppuccin')
 vim.g.catppuccin_flavour = "frappe"
+vim.cmd('colorscheme catppuccin')
+vim.opt.background = 'dark'
 vim.cmd('highlight ColorColumn ctermbg=1 guibg=red')
 
 local statusGruv, gruvbox = pcall(require, 'gruvbox')
@@ -38,7 +38,7 @@ catppuccin.setup({
   },
   term_colors = true,
   compile = {
-    enabled = false,
+    enabled = true,
     path = vim.fn.stdpath("cache") .. "/catppuccin",
   },
   dim_inactive = {
@@ -64,7 +64,7 @@ catppuccin.setup({
     -- For various plugins integrations see https://github.com/catppuccin/nvim#integrations
     telescope = true,
     treesitter = true,
-    treesitter_context = false,
+    treesitter_context = true,
     gitsigns = true,
     dashboard = true,
     nvimtree = true,

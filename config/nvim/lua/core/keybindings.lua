@@ -71,9 +71,10 @@ map('', "<leader>gd", ":lua require('telescope.builtin').lsp_definitions()<CR>")
 map('', "<leader>gr", ":lua require('telescope.builtin').lsp_references()<CR>")
 map('', "<leader>gs", ":lua require('telescope.builtin').lsp_document_symbols()<CR>")
 map('', "<leader>rn", ":lua vim.lsp.buf.rename()<CR>")
-map('', "<space>f",   ":lua vim.lsp.buf.formatting()<CR>")
+map('n', "<leader>f",   ":Prettier<CR>")
 map('n', 'K',         ':lua vim.lsp.buf.hover()<CR>')
 map('n', '<space>ca', ':lua vim.lsp.buf.code_action()<CR>')
+map ('n', '<space>e', ':lua vim.diagnostic.open_float(0, {scope="line"})<CR>')
 
 -- Git
 map('', "<leader>do", ":DiffviewOpen<CR>")

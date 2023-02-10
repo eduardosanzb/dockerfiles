@@ -70,6 +70,23 @@ local on_attach = function(client, bufnr)
   --   )
   -- end
 
+  --[[ Avoid clashes between deno & tsserver ]]
+  local active_clients = vim.lsp.get_active_clients()
+  if client.name == 'denols' then
+    for _, client_ in pairs(active_clients) do
+      -- stop tsserver if denols is already active
+      if client_.name == 'tsserver' then
+        client_.stop()
+      end
+    end
+  elseif client.name == 'tsserver' then
+    for _, client_ in pairs(active_clients) do
+      -- prevent tsserver from starting if denols is already active
+      if client_.name == 'denols' then
+        client.stop()
+      end
+    end
+  end
   -- Enable completion triggered by <c-x><c-o>
   vim.api.nvim_buf_set_option(bufnr, "omnifunc", "v:lua.vim.lsp.omnifunc")
 
@@ -129,6 +146,7 @@ for _, lsp in ipairs(servers) do
   })
 end
 
+
 vim.g.markdown_fenced_languages = {
   "ts=typescript",
 }
@@ -166,11 +184,12 @@ lspconfig.denols.setup({
   },
 })
 
+
 local null_ls = require("null-ls")
 local eslint = require("eslint")
 local prettier = require("prettier")
 
--- null_ls.setup()
+null_ls.setup()
 --
 -- prettier.setup({
 --   bin = 'prettierd', -- or `'prettierd'` (v0.22+)

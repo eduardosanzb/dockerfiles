@@ -66,6 +66,7 @@ return packer.startup({ function(use)
   use 'ellisonleao/gruvbox.nvim'
   use 'https://gitlab.com/HiPhish/resolarized.nvim.git'
   use { "catppuccin/nvim", as = "catppuccin" }
+
   use "delphinus/auto-cursorline.nvim"
 
 
@@ -74,6 +75,14 @@ return packer.startup({ function(use)
 
   -- LSP
   use 'neovim/nvim-lspconfig'
+  use({
+    "glepnir/lspsaga.nvim",
+    branch = "main",
+    config = function()
+        -- require("lspsaga").setup({})
+    end,
+    requires = { {"nvim-tree/nvim-web-devicons"} }
+})
   -- LSP plugin for typescript
   use 'jose-elias-alvarez/typescript.nvim'
   use 'jose-elias-alvarez/null-ls.nvim'
