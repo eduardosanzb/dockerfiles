@@ -131,7 +131,7 @@ local servers = {
   "jsonls",
   "eslint",
   "terraformls",
-  "ltex"
+  -- "ltex"
 
 }
 
@@ -151,7 +151,7 @@ vim.g.markdown_fenced_languages = {
   "ts=typescript",
 }
 
-lspconfig.sumneko_lua.setup {
+lspconfig.lua_ls.setup {
   on_attach = on_attach,
   capabilities = capabilities,
   flags = {

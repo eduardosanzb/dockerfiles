@@ -19,12 +19,18 @@ require('plugins/nvim-telescope')
 require('plugins/nvim-tree')
 require('plugins/nvim-treesitter')
 require('plugins/treesitter-context')
+require('plugins/nvim-neo-tree')
 require('plugins/glow-nvim')
 require('plugins/auto-cursorline')
 require('plugins/leap')
-
+require('plugins/lsp-saga')
 
 require('eduardosanzb')
 
+require('plugins/auto-dark-mode')
+
 -- Autocommands need to be sourced at the end!
 require('core/autocommands')
+
+-- Copilot setup
+vim.cmd([[ let g:copilot_filetypes = {  'markdown': v:true, 'yaml': v:true } ]])

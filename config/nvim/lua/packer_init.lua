@@ -14,7 +14,7 @@ if fn.empty(fn.glob(install_path)) > 0 then
   vim.o.runtimepath = vim.fn.stdpath('data') .. '/site/pack/*/start/*,' .. vim.o.runtimepath
 end
 
--- Autocommand that reloads neovim whenever you save the packer_init.lua file
+-- Autocommand that reloads neovim whenever you save the packer_init.lua filepacker
 vim.cmd [[
   augroup packer_user_config
     autocmd!
@@ -31,6 +31,8 @@ end
 return packer.startup({ function(use)
   -- packer can manage itself
   use 'wbthomason/packer.nvim'
+
+  use 'wakatime/vim-wakatime'
 
   -- File explorer
   use 'kyazdani42/nvim-tree.lua'
@@ -61,12 +63,24 @@ return packer.startup({ function(use)
     'nvim-telescope/telescope.nvim', tag = '0.1.0',
     requires = { { 'nvim-lua/plenary.nvim' }, { "nvim-telescope/telescope-live-grep-args.nvim" }, }
   }
+
+  -- Docs generator
+  use {
+    "danymat/neogen",
+    config = function()
+      require('neogen').setup {}
+    end,
+    requires = "nvim-treesitter/nvim-treesitter",
+    -- Uncomment next line if you want to follow only stable versions
+    -- tag = "*"
+  }
   -- Color schemes
   use 'navarasu/onedark.nvim'
   use 'ellisonleao/gruvbox.nvim'
   use 'https://gitlab.com/HiPhish/resolarized.nvim.git'
   use { "catppuccin/nvim", as = "catppuccin" }
 
+  use 'f-person/auto-dark-mode.nvim'
   use "delphinus/auto-cursorline.nvim"
 
 
@@ -78,11 +92,12 @@ return packer.startup({ function(use)
   use({
     "glepnir/lspsaga.nvim",
     branch = "main",
-    config = function()
-        -- require("lspsaga").setup({})
-    end,
-    requires = { {"nvim-tree/nvim-web-devicons"} }
-})
+    requires = {
+      { "nvim-tree/nvim-web-devicons" },
+      --Please make sure you install markdown and markdown_inline parser
+      { "nvim-treesitter/nvim-treesitter" }
+    }
+  })
   -- LSP plugin for typescript
   use 'jose-elias-alvarez/typescript.nvim'
   use 'jose-elias-alvarez/null-ls.nvim'
@@ -142,9 +157,10 @@ return packer.startup({ function(use)
   }
 
   use { "williamboman/mason.nvim" }
+  use 'folke/neodev.nvim'
   use 'mfussenegger/nvim-dap'
-
   use { "rcarriga/nvim-dap-ui", requires = { "mfussenegger/nvim-dap" } }
+  use 'leoluz/nvim-dap-go'
 
 
   -- Markdown preview
@@ -182,6 +198,30 @@ return packer.startup({ function(use)
       require "octo".setup()
     end
   }
+
+  use 'github/copilot.vim'
+
+  -- Unless you are still migrating, remove the deprecated commands from v1.x
+
+  use {
+    "nvim-neo-tree/neo-tree.nvim",
+    branch = "v2.x",
+    requires = {
+      "nvim-lua/plenary.nvim",
+      "nvim-tree/nvim-web-devicons", -- not strictly required, but recommended
+      "MunifTanjim/nui.nvim",
+    }
+  }
+
+  -- Kubernetes
+  -- https://github.com/arjunmahishi/k8s.nvim
+  use {
+    'arjunmahishi/k8s.nvim',
+    config = function ()
+      require 'k8s'.setup{
+      }
+    end
+  }
   -- Automatically set up your configuration after cloning packer.nvim
   -- Put this at the end after all plugins
   if packer_bootstrap then
@@ -196,4 +236,3 @@ end,
     }
   }
 })
-

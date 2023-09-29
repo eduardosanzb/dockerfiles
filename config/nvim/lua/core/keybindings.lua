@@ -13,6 +13,8 @@ end
 -- OUR BELOVED SPACE AS THE LEADEEER!
 vim.g.mapleader = " "
 
+-- Copilot --
+vim.api.nvim_set_keymap('i', '<C-/>', 'copilot#Accept("<CR>")', {expr=true, silent=true})
 
 -- Disable arrow keys --
 map('', '<up>', ':wincmd + <CR>')
@@ -45,8 +47,8 @@ map('t', '<C-Esc>', '<C-\\><C-n><CR>')
 
 -- Plugins --
   -- TreeSitter
-map('', '<tab>', ":lua require('nvim-tree').toggle(false, true)<CR>")
-map('', '<leader><tab>', ":lua require('nvim-tree').focus()<CR>")
+map('', '<tab>', ":lua require('nvim-tree.api').tree.toggle({ focus = false })<CR>")
+map('', '<leader><tab>', ":lua require('nvim-tree.api').tree.open({ find_file = true })<CR>")
 map("n", "<leader>mn", ":lua require('nvim-tree.api').marks.navigate.next()<CR>")
 map("n", "<leader>mp", ":lua require('nvim-tree.api').marks.navigate.prev()<CR>")
 map("n", "<leader>ms", ":lua require('nvim-tree.api').marks.navigate.select()<CR>")
@@ -76,6 +78,13 @@ map('n', 'K',         ':lua vim.lsp.buf.hover()<CR>')
 map('n', '<space>ca', ':lua vim.lsp.buf.code_action()<CR>')
 map ('n', '<space>e', ':lua vim.diagnostic.open_float(0, {scope="line"})<CR>')
 
+-- lsp saga
+map ('n', 'sd', ':Lspsaga peek_type_definition<CR>')
+
+-- lsp k8s
+map('n', '<leader>kn', ':K8sNamespaces<CR>')
+
+
 -- Git
 map('', "<leader>do", ":DiffviewOpen<CR>")
 map('', "<leader>dc", ":DiffviewClose<CR>")
@@ -90,3 +99,6 @@ map('n', '<leader>cl', ':Catppuccin latte<CR>')
 
 -- Liveplatform
 map('n', '<leader>fp', ':!yarn format<CR>')
+
+-- DapUI
+map('n', '<leader>du', ':lua require("dapui").toggle()<CR>')

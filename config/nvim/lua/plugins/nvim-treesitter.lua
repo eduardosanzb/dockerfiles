@@ -14,15 +14,19 @@ nvim_treesitter.setup {
   -- A list of parser names, or "all"
   ensure_installed = {
     'bash', 'css', 'html', 'javascript', 'json', 'lua',
-    'typescript', 'vim', 'go', 'graphql', 'yaml', 'hcl', 'prisma'
+    'typescript', 'vim', 'go', 'graphql', 'yaml', 'hcl', 'prisma', 'yaml'
   },
 
+  auto_install = true,
+
   -- Install parsers synchronously (only applied to `ensure_installed`)
-  sync_install = false,
+  sync_install = true,
   highlight = {
     -- `false` will disable the whole extension
     enable = true,
   },
+
+  additional_vim_regex_highlighting = false,
 }
 
 --folding based on treesitter

@@ -16,6 +16,9 @@ if not luasnip_status_ok then
   return
 end
 
+vim.g['copilot_no_tab_map'] = true
+vim.g['copilot_assume_mapped'] = true
+
 cmp.setup {
   -- Load snippet support
   snippet = {
@@ -24,7 +27,7 @@ cmp.setup {
     end,
   },
 
--- Completion settings
+  -- Completion settings
   completion = {
     --completeopt = 'menu,menuone,noselect'
     keyword_length = 2
@@ -47,6 +50,8 @@ cmp.setup {
     ['<Tab>'] = function(fallback)
       if cmp.visible() then
         cmp.select_next_item()
+      elseif vim.b._copilot_suggestion ~= nil then
+        vim.fn.feedkeys(vim.api.nvim_replace_termcodes(vim.fn['copilot#Accept'](), true, true, true), '')
       elseif luasnip.expand_or_jumpable() then
         luasnip.expand_or_jump()
       else
