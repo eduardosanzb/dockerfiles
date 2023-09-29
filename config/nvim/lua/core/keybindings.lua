@@ -86,9 +86,9 @@ map('n', '<leader>kn', ':K8sNamespaces<CR>')
 
 
 -- Git
-map('', "<leader>do", ":DiffviewOpen<CR>")
-map('', "<leader>dc", ":DiffviewClose<CR>")
-map('', "<leader>dh", ":DiffviewFileHistory<CR>")
+-- map('', "<leader>do", ":DiffviewOpen<CR>")
+-- map('', "<leader>dc", ":DiffviewClose<CR>")
+-- map('', "<leader>dh", ":DiffviewFileHistory<CR>")
 
 -- markdown
 map('n', '<leader>md', ":Glow<CR>")
@@ -100,5 +100,15 @@ map('n', '<leader>cl', ':Catppuccin latte<CR>')
 -- Liveplatform
 map('n', '<leader>fp', ':!yarn format<CR>')
 
--- DapUI
+-- Dap
 map('n', '<leader>du', ':lua require("dapui").toggle()<CR>')
+-- map for continue, breakpoint, stepover, stepinto, stepout
+map('n', '<leader>dc', ':lua require("dap").continue()<CR>')
+map('n', '<leader>db', ':lua require("dap").toggle_breakpoint()<CR>')
+map('n', '<leader>dn', ':lua require("dap").step_over()<CR>')
+map('n', '<leader>di', ':lua require("dap").step_into()<CR>')
+map('n', '<leader>do', ':lua require("dap").step_out()<CR>')
+
+
+
+
