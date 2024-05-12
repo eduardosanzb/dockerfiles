@@ -167,6 +167,10 @@ return packer.startup({
     use { "rcarriga/nvim-dap-ui", requires = { "mfussenegger/nvim-dap" } }
     use 'leoluz/nvim-dap-go'
 
+    -- Golang
+    use 'ray-x/go.nvim'
+    use 'ray-x/guihua.lua' -- recommended if need floating window support
+
 
     -- Markdown preview
     use { "ellisonleao/glow.nvim" }

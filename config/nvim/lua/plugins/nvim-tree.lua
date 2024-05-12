@@ -22,10 +22,14 @@ nvim_tree.setup({
 
   view = {
     relativenumber = true,
+    preserve_window_proportions = true,
+
+
   },
 
   renderer = {
     group_empty = true,
+    full_name = true,
   },
 
   modified = {

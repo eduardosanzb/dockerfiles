@@ -17,10 +17,22 @@ telescope.load_extension("dap")
 telescope.setup {
   pickers = {
     find_files = {
-      theme = "dropdown"
+      theme = "ivy"
+    },
+    git_files = {
+      theme = "ivy"
     },
     live_grep = {
-      theme = "dropdown"
-    }
-  }
+      theme = "ivy"
+    },
+    grep_string = {
+      theme = "ivy"
+    },
+  },
+  extensions = {
+    live_grep_args = {
+      theme = "ivy"
+    },
+  },
+
 }

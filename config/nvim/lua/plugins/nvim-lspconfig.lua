@@ -55,7 +55,6 @@ vim.keymap.set('n', '<space>q', vim.diagnostic.setloclist, opts)
 -- Use an on_attach function to only map the following keys
 -- after the language server attaches to the current buffer
 local on_attach = function(client, bufnr)
-
   -- Highlighting references
   -- if client.resolved_capabilities.document_highlight then
   --   vim.api.nvim_exec(
@@ -112,7 +111,6 @@ local on_attach = function(client, bufnr)
   vim.keymap.set("n", "]d", ":lua vim.lsp.diagnostic.goto_next()<CR>", bufopts)
   vim.keymap.set("n", "<space>q", ":lua vim.lsp.diagnostic.set_loclist()<CR>", bufopts)
   vim.keymap.set('n', '<space>f', function() vim.lsp.buf.format { async = true } end, bufopts)
-
 end
 
 
@@ -125,7 +123,6 @@ local servers = {
   "clangd",
   "html",
   "cssls",
-  "gopls",
   "graphql",
   "denols",
   "jsonls",
@@ -183,6 +180,27 @@ lspconfig.denols.setup({
     debounce_text_changes = 150,
   },
 })
+
+-- Add golangcilsp linter setup
+if not lspconfig.golangcilsp then
+  lspconfig.golangcilsp = {
+    default_config = {
+      cmd = { 'golangci-lint-langserver' },
+      root_dir = lspconfig.util.root_pattern('.git', 'go.mod'),
+      init_options = {
+        command = { "golangci-lint", "run", "--enable-all", "--disable", "lll", "--out-format", "json",
+          "--issues-exit-code=1" },
+      }
+    },
+  }
+end
+lspconfig.golangci_lint_ls.setup {
+  filetypes = { 'go', 'gomod' }
+}
+
+lspconfig.gopls.setup({})
+
+
 
 
 local null_ls = require("null-ls")

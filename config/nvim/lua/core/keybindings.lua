@@ -72,8 +72,25 @@ map('', "<leader>gD", ":lua require('telescope.builtin').lsp_type_definitions()<
 map('', "<leader>gd", ":lua require('telescope.builtin').lsp_definitions()<CR>")
 map('', "<leader>gr", ":lua require('telescope.builtin').lsp_references()<CR>")
 map('', "<leader>gs", ":lua require('telescope.builtin').lsp_document_symbols()<CR>")
+map('', "<leader>sd", ":lua require('telescope.builtin').diagnostics()<CR>")
 map('', "<leader>rn", ":lua vim.lsp.buf.rename()<CR>")
-map('n', "<leader>f",   ":Prettier<CR>")
+
+function RunPrettierAngGofmt()
+    local file_extension = vim.fn.expand('%:e')
+    local prettier_languages = {'js', 'ts', 'json', 'yaml', 'yml'} -- Add more languages if needed
+
+    if file_extension == 'go' then
+        vim.cmd('GoFmt')
+    elseif vim.fn.index(prettier_languages, file_extension) >= 0 then
+        vim.cmd('Prettier')
+    else
+        print("No matching formatter for this file type.")
+    end
+end
+
+
+
+map('n', "<leader>f",   ":lua RunPrettierAngGofmt()<CR>")
 map('n', 'K',         ':lua vim.lsp.buf.hover()<CR>')
 map('n', '<space>ca', ':lua vim.lsp.buf.code_action()<CR>')
 map ('n', '<space>e', ':lua vim.diagnostic.open_float(0, {scope="line"})<CR>')
@@ -108,6 +125,9 @@ map('n', '<leader>db', ':lua require("dap").toggle_breakpoint()<CR>')
 map('n', '<leader>dn', ':lua require("dap").step_over()<CR>')
 map('n', '<leader>di', ':lua require("dap").step_into()<CR>')
 map('n', '<leader>do', ':lua require("dap").step_out()<CR>')
+
+-- GOlang
+map('n', '<leader>rt', ':GoTest -v -a -enable-mock-server=true <CR>')
 
 
 

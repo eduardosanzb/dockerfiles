@@ -24,6 +24,7 @@ require('plugins/glow-nvim')
 require('plugins/auto-cursorline')
 require('plugins/leap')
 require('plugins/lsp-saga')
+require('plugins/go')
 
 require('eduardosanzb')
 
