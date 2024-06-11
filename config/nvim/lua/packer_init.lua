@@ -82,8 +82,8 @@ return packer.startup({
     -- Color schemes
     use 'navarasu/onedark.nvim'
     use 'ellisonleao/gruvbox.nvim'
-    use 'https://gitlab.com/HiPhish/resolarized.nvim.git'
     use { "catppuccin/nvim", as = "catppuccin" }
+    use 'arzg/vim-colors-xcode'
 
     use 'f-person/auto-dark-mode.nvim'
     use "delphinus/auto-cursorline.nvim"
@@ -163,7 +163,8 @@ return packer.startup({
 
     use { "williamboman/mason.nvim" }
     use 'folke/neodev.nvim'
-    use 'mfussenegger/nvim-dap'
+    use {'mfussenegger/nvim-dap', requires = { "theHamsta/nvim-dap-virtual-text", "nvim-neotest/nvim-nio" }}
+
     use { "rcarriga/nvim-dap-ui", requires = { "mfussenegger/nvim-dap" } }
     use 'leoluz/nvim-dap-go'
 

@@ -50,7 +50,8 @@ catppuccin.setup({
   highlight_overrides = {},
 })
 -- setup must be called before loading
-vim.cmd('colorscheme catppuccin')
+-- vim.cmd('colorscheme catppuccin')
+vim.cmd('colorscheme xcode')
 
 -- local statusGruv, gruvbox = pcall(require, 'gruvbox')
 -- if not statusGruv then

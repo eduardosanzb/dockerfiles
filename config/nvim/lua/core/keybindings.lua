@@ -111,8 +111,8 @@ map('n', '<leader>kn', ':K8sNamespaces<CR>')
 map('n', '<leader>md', ":Glow<CR>")
 
 -- colorscheme
-map('n', '<leader>cd', ':Catppuccin frappe<CR>')
-map('n', '<leader>cl', ':Catppuccin latte<CR>')
+map('n', '<leader>cd', ':set background=dark<CR>')
+map('n', '<leader>cl', ':set background=light<CR>')
 
 -- Liveplatform
 map('n', '<leader>fp', ':!yarn format<CR>')
