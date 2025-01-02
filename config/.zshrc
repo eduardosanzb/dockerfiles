@@ -29,31 +29,17 @@ alias vim=nvim
 alias cat=bat
 alias kap="kubectl apply -f"
 alias edukey="sh ~/.config/keyboard/edukey.sh"
-# make an alias to opa file to be a command
-alias opa="~/opa"
 autoload bashcompinit && bashcompinit
 
-
-#deno installations
-export DENO_INSTALL_ROOT="${HOME}/.deno"
-mkdir -p "${DENO_INSTALL_ROOT}"
-export PATH="${HOME}/.deno/bin:$PATH"
+# AUTOCOMPLATION SETUP
+source <(fzf --zsh)
 
 
-export PATH="/opt/homebrew/opt/mongodb-community@4.4/bin:$PATH"
-export NPM_GITHUB_TOKEN=<>
+export NPM_GITHUB_TOKEN=noesuntoken
 export REDIS_IN_MEMORY_VERSION=6.0.10
 
 
-# https://confluence.unity3d.com/pages/viewpage.action?spaceKey=PRE&title=Steps+to+add+JFrog+Artifactory+to+your+workflow#StepstoaddJFrogArtifactorytoyourworkflow-3.)CanyouuseJFroginyourdevelopmentworkflow?(HowtointeractlocallywithJFrog)
-#`~/.profile` must be sourced by the shell for this to work.
-export JFROG_ARTIFACTORY_READ_USER=eduardo.bautista@unity3d.com
-export JFROG_ARTIFACTORY_READ_TOKEN=<>
-
 # To npm install work when doing docker build locally
-echo export JFROG_ARTIFACTORY_READ_USER=${JFROG_ARTIFACTORY_READ_USER} >> ~/.profile
-echo export JFROG_ARTIFACTORY_READ_TOKEN=${JFROG_ARTIFACTORY_READ_TOKEN} >> ~/.profile
-
 ZSH_COMMAND_TIME_MIN_SECONDS=3
 ZSH_COMMAND_TIME_MSG="Execution time: %s sec"
 ZSH_COMMAND_TIME_COLOR="cyan"
@@ -66,21 +52,25 @@ export GOPATH=$HOME/go
 export PATH=$PATH:$GOPATH/bin
 
 
-# Unity vault config
-export VAULT_ADDR='https://vault.corp.unity3d.com'
+# GOOGLE CLOUD SDK
+# The next line updates PATH for the Google Cloud SDK.
+if [ -f '/Users/eduardosanchez/Downloads/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/eduardosanchez/Downloads/google-cloud-sdk/path.zsh.inc'; fi
+# The next line enables shell command completion for gcloud.
+if [ -f '/Users/eduardosanchez/Downloads/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/eduardosanchez/Downloads/google-cloud-sdk/completion.zsh.inc'; fi
 
+
+# FNM that is the new NVM
+eval "$(fnm env --use-on-cd)"
+export PATH="/Users/eduardosanchez/.local/state/fnm_multishells/56576_1733171548825/bin":$PATH
+export FNM_MULTISHELL_PATH="/Users/eduardosanchez/.local/state/fnm_multishells/56576_1733171548825"
+export FNM_VERSION_FILE_STRATEGY="local"
+export FNM_DIR="/Users/eduardosanchez/.local/share/fnm"
+export FNM_LOGLEVEL="info"
+export FNM_NODE_DIST_MIRROR="https://nodejs.org/dist"
+export FNM_COREPACK_ENABLED="false"
+export FNM_RESOLVE_ENGINES="true"
+export FNM_ARCH="arm64"
+rehash
 
 #FINAL SOURCE
 source $ZSH/oh-my-zsh.sh
-
-
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
-
-# The next line updates PATH for the Google Cloud SDK.
-# The next line enables shell command completion for gcloud.
-source "$(brew --prefix)/share/google-cloud-sdk/path.zsh.inc"
-source "$(brew --prefix)/share/google-cloud-sdk/completion.zsh.inc"
-
-

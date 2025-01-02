@@ -16,14 +16,12 @@ if not status_ok then
   return
 end
 
-local status, ctp_feline = pcall(require, 'catppuccin.groups.integrations.feline')
-if not status then
-  return
-end
-
-
-ctp_feline.setup({})
+-- local status, ctp_feline = pcall(require, 'catppuccin.groups.integrations.feline')
+-- if not status then
+--   return
+-- end
+-- ctp_feline.setup({})
 
 feline.setup({
-  components = ctp_feline.get(),
+  -- components = ctp_feline.get(),
 })

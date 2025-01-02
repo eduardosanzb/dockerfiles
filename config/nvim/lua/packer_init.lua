@@ -33,7 +33,7 @@ return packer.startup({
     -- packer can manage itself
     use 'wbthomason/packer.nvim'
 
-    use 'wakatime/vim-wakatime'
+    -- use 'wakatime/vim-wakatime'
 
     -- File explorer
     use 'kyazdani42/nvim-tree.lua'
@@ -65,7 +65,7 @@ return packer.startup({
       requires = {
         { 'nvim-lua/plenary.nvim' },
         { "nvim-telescope/telescope-live-grep-args.nvim" },
-        { "mfussenegger/nvim-dap" }
+        -- { "mfussenegger/nvim-dap" }
       }
     }
 
@@ -163,10 +163,10 @@ return packer.startup({
 
     use { "williamboman/mason.nvim" }
     use 'folke/neodev.nvim'
-    use {'mfussenegger/nvim-dap', requires = { "theHamsta/nvim-dap-virtual-text", "nvim-neotest/nvim-nio" }}
+    -- use {'mfussenegger/nvim-dap', requires = { "theHamsta/nvim-dap-virtual-text", "nvim-neotest/nvim-nio" }}
 
-    use { "rcarriga/nvim-dap-ui", requires = { "mfussenegger/nvim-dap" } }
-    use 'leoluz/nvim-dap-go'
+
+
 
     -- Golang
     use 'ray-x/go.nvim'
