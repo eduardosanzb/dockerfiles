@@ -1,10 +1,13 @@
 require('packer_init')
 
+require('plugins/snacks')
+
 require('core/chinook')
 require('core/commands')
 require('core/keybindings')
 require('core/options')
 require('core/statusline')
+
 
 require('plugins/nvim-dap')
 
@@ -29,6 +32,7 @@ require('plugins/go')
 require('eduardosanzb')
 
 require('plugins/auto-dark-mode')
+
 
 -- Autocommands need to be sourced at the end!
 require('core/autocommands')

@@ -33,7 +33,26 @@ return packer.startup({
     -- packer can manage itself
     use 'wbthomason/packer.nvim'
 
-    -- use 'wakatime/vim-wakatime'
+
+    use 'folke/snacks.nvim'
+    use { "Morozzzko/git_browse.nvim" }
+    -- nvim v0.7.2
+    use({
+      "kdheepak/lazygit.nvim",
+      requires = {
+        "nvim-lua/plenary.nvim",
+      },
+    })
+
+
+    -- The bundle of plugins
+    use 'hville/lazy-stats'
+    use {
+      "folke/snacks.nvim",
+    }
+    use "folke/which-key.nvim"
+    use "Morozzzko/git_browse.nvim"
+
 
     -- File explorer
     use 'kyazdani42/nvim-tree.lua'

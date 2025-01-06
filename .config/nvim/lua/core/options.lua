@@ -33,3 +33,5 @@ vim.opt.scrolloff=8
 -- vim.cmd('signcolumn yes')
 vim.opt.colorcolumn = '160'
 
+
+vim.cmd("language en_US.utf-8")
