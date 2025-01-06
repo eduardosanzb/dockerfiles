@@ -57,6 +57,8 @@ return packer.startup({
     -- File explorer
     use 'kyazdani42/nvim-tree.lua'
     use 'kyazdani42/nvim-web-devicons'
+    use 'nvim-tree/nvim-web-devicons'
+
 
     -- Indent line
     use 'lukas-reineke/indent-blankline.nvim'
