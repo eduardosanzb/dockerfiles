@@ -1,7 +1,12 @@
-keybind = opt+l=goto_split:right
-keybind = opt+h=goto_split:left
-keybind = opt+k=goto_split:top
-keybind = opt+j=goto_split:bottom
+keybind = control+l=goto_split:right
+keybind = control+h=goto_split:left
+keybind = control+k=goto_split:top
+keybind = control+j=goto_split:bottom
 keybind = global:command+grave_accent=toggle_quick_terminal
+
+unfocused-split-opacity = 0.9
+# unfocused-split-fill = gray
+
+
 
 theme = dark:catppuccin-macchiato,light:farmhouse-light
