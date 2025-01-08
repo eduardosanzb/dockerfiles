@@ -1,1 +1,7 @@
-Test = true
+keybind = opt+l=goto_split:right
+keybind = opt+h=goto_split:left
+keybind = opt+k=goto_split:top
+keybind = opt+j=goto_split:bottom
+keybind = global:command+grave_accent=toggle_quick_terminal
+
+theme = dark:catppuccin-macchiato,light:farmhouse-light

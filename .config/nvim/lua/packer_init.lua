@@ -77,6 +77,14 @@ return packer.startup({
     -- Tag viewer
     use 'preservim/tagbar'
 
+    -- hex color highligher
+    use {
+      "catgoose/nvim-colorizer.lua",
+      config = function()
+        require("colorizer").setup()
+      end
+    }
+
     -- Treesitter interface
     use 'nvim-treesitter/nvim-treesitter'
     use 'nvim-treesitter/nvim-treesitter-context'
@@ -230,7 +238,28 @@ return packer.startup({
       end
     }
 
+    -- AI SHIT
     use 'github/copilot.vim'
+    use {
+      "yetone/avante.nvim",
+      build = "make BUILD_FROM_SOURCE=true",
+      lazy = false,
+      version = false,
+      BUILD_FROM_SOURCE = true,
+      config = function()
+        require("avante_lib").load()
+        require("avante").setup()
+      end,
+      requires = {
+        "nvim-treesitter/nvim-treesitter",
+        "stevearc/dressing.nvim",
+        "nvim-lua/plenary.nvim",
+        "MunifTanjim/nui.nvim",
+        --- The below dependencies are optional,
+        "nvim-tree/nvim-web-devicons", -- or echasnovski/mini.icons
+        "HakonHarnes/img-clip.nvim",
+      },
+    }
 
     -- Unless you are still migrating, remove the deprecated commands from v1.x
 
