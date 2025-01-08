@@ -4,3 +4,4 @@ ssh/known_hosts
 ssh/
 
 aws/credentials
+.config/.DS_Store
