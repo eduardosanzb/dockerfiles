@@ -112,7 +112,7 @@ map('n', '<leader>md', ":Glow<CR>")
 
 -- colorscheme
 map('n', '<leader>cd', ':set background=dark<CR>')
-map('n', '<leader>cl', ':set background=light<CR>')
+map('n', '<leader>cl', ':set backgro:Bund=light<CR>')
 
 -- Liveplatform
 map('n', '<leader>fp', ':!yarn format<CR>')
@@ -128,6 +128,13 @@ map('n', '<leader>do', ':lua require("dap").step_out()<CR>')
 
 -- GOlang
 map('n', '<leader>rt', ':GoTest -v -a -enable-mock-server=true <CR>')
+
+-- lazygit
+map('n', '<leader>lg', ':LazyGit<CR>')
+
+-- git Browser
+map('n', '<leader>ghf', ':Browse<CR>')
+map('n', '<leader>ghl', ':BrowseLine<CR>')
 
 
 
