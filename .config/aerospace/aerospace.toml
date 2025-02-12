@@ -11,7 +11,7 @@ after-login-command = []
 # Available commands : https://nikitabobko.github.io/AeroSpace/commands
 after-startup-command = [
   'exec-and-forget sketchybar',
-  'exec-and-forget borders active_color=0xffe1e3e4 inactive_color=0xff494d64 width=5.0'
+  'exec-and-forget borders active_color=0xffe1e3e4 inactive_color=0xff494d64 width=3.0'
 ]
 
 exec-on-workspace-change = [
@@ -19,7 +19,6 @@ exec-on-workspace-change = [
   '-c',
   'sketchybar --trigger aerospace_workspace_change FOCUSED_WORKSPACE=$AEROSPACE_FOCUSED_WORKSPACE'
 ]
-
 
 # Start AeroSpace at login
 start-at-login = true
@@ -31,7 +30,7 @@ enable-normalization-opposite-orientation-for-nested-containers = true
 # See: https://nikitabobko.github.io/AeroSpace/guide#layouts
 # The 'accordion-padding' specifies the size of accordion padding
 # You can set 0 to disable the padding feature
-accordion-padding = 100
+accordion-padding = 50
 
 # Possible values: tiles|accordion
 default-root-container-layout = 'tiles'
@@ -78,6 +77,9 @@ outer.right =      10
 # 'main' binding mode must be always presented
 # Fallback value (if you omit the key): mode.main.binding = {}
 [mode.main.binding]
+
+
+
 
 # All possible keys:
 # - Letters.        a, b, c, ..., j
@@ -132,6 +134,7 @@ alt-3 = 'workspace 3'
 alt-b = 'workspace b'
 alt-t = 'workspace t'
 alt-m = 'workspace m'
+alt-p = 'workspace p'
 
 # See: https://nikitabobko.github.io/AeroSpace/commands#move-node-to-workspace
 alt-shift-1 = 'move-node-to-workspace 1'
@@ -140,6 +143,7 @@ alt-shift-3 = 'move-node-to-workspace 3'
 alt-shift-b = 'move-node-to-workspace b'
 alt-shift-t = 'move-node-to-workspace t'
 alt-shift-m = 'move-node-to-workspace m'
+alt-shift-p = 'move-node-to-workspace p'
 
 # See: https://nikitabobko.github.io/AeroSpace/commands#workspace-back-and-forth
 alt-tab = 'workspace-back-and-forth'
@@ -160,6 +164,8 @@ backspace = ['close-all-windows-but-current', 'mode main']
 # sticky is not yet supported https://github.com/nikitabobko/AeroSpace/issues/2
 #s = ['layout sticky tiling', 'mode main']
 
+alt-shift-equal = 'balance-sizes'
+
 alt-shift-h = ['join-with left', 'mode main']
 alt-shift-j = ['join-with down', 'mode main']
 alt-shift-k = ['join-with up', 'mode main']
@@ -168,3 +174,35 @@ alt-shift-l = ['join-with right', 'mode main']
 down = 'volume down'
 up = 'volume up'
 shift-down = ['volume set 0', 'mode main']
+
+# The callbacks need to be at the end
+
+[[on-window-detected]]
+if.app-id = 'com.google.Chrome'
+run = 'move-node-to-workspace b'
+
+[[on-window-detected]]
+if.app-id = 'com.mitchellh.ghostty'
+run = 'move-node-to-workspace t'
+
+[[on-window-detected]]
+if.app-id = 'net.whatsapp.WhatsApp'
+run = 'move-node-to-workspace m'
+
+[[on-window-detected]]
+if.app-id = 'com.apple.MobileSMS'
+run = 'move-node-to-workspace m'
+
+[[on-window-detected]]
+if.app-id = 'com.adobe.lightroomCC'
+run = 'move-node-to-workspace p'
+
+[[on-window-detected]]
+  if.app-id = 'cc.ffitch.shottr'
+  check-further-callbacks = true
+  run = ['layout floating']  # The callback itself
+
+[[on-window-detected]]
+  if.app-id = 'com.apple.ActivityMonitor'
+  check-further-callbacks = true
+  run = ['layout floating']  # The callback itself

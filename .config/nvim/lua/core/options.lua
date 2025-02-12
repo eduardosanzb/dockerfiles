@@ -35,3 +35,9 @@ vim.opt.colorcolumn = '160'
 
 
 vim.cmd("language en_US.utf-8")
+
+
+if vim.g.neovide then
+  vim.keymap.set({ "n", "x" }, "<C-S-C>", '"+y', { desc = "Copy system clipboard" })
+  vim.keymap.set({ "n", "x" }, "<C-S-V>", '"+p', { desc = "Paste system clipboard" })
+end

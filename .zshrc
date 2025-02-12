@@ -1,5 +1,10 @@
 export ZSH="$HOME/.oh-my-zsh"
 
+# Sourcing all the env variables like anthropic
+source $HOME/.env
+source $HOME/.local/bin/env
+
+
 ZSH_THEME="Eastwood"
 CASE_SENSITIVE="true"
 REPORTTIME=3
@@ -29,10 +34,17 @@ alias vim=nvim
 alias cat=bat
 alias kap="kubectl apply -f"
 alias edukey="sh ~/.config/keyboard/edukey.sh"
-autoload bashcompinit && bashcompinit
+autoload compinit
 
-# AUTOCOMPLATION SETUP
-source <(fzf --zsh)
+# AUTOCOMPLETION SETUP (Corrected)
+fpath=(~/.zsh/functions $fpath)  # Add your custom functions directory FIRST
+autoload -Uz compinit && compinit   # Initialize Zsh completion
+source <(fzf --zsh)                # fzf integration (moved)
+
+# Source UV completion (after compinit)
+if [[ -f ~/.zsh/functions/_uv ]]; then
+  source ~/.zsh/functions/_uv
+fi
 
 
 export NPM_GITHUB_TOKEN=noesuntoken
@@ -74,3 +86,8 @@ rehash
 
 #FINAL SOURCE
 source $ZSH/oh-my-zsh.sh
+
+# Added by LM Studio CLI (lms)
+export PATH="$PATH:/Users/eduardosanchez/.lmstudio/bin"
+
+. "$HOME/.local/bin/env"

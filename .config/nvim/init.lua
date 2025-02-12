@@ -29,6 +29,7 @@ require('plugins/leap')
 require('plugins/lsp-saga')
 require('plugins/go')
 
+
 require('eduardosanzb')
 
 require('plugins/auto-dark-mode')

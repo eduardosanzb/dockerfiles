@@ -29,8 +29,8 @@ if [ $incidents -gt 0 ]; then
     color="#FF0000"
   fi
 
-  sketchybar --set $NAME label="bad" icon.color=$color
+  sketchybar --set $NAME label="bad $highest_impact" icon.color=$color
 else
-  sketchybar --set $NAME label=""
+  sketchybar --set $NAME label="no bad"
 fi
 

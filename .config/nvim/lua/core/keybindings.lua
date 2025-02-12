@@ -112,7 +112,7 @@ map('n', '<leader>md', ":Glow<CR>")
 
 -- colorscheme
 map('n', '<leader>cd', ':set background=dark<CR>')
-map('n', '<leader>cl', ':set backgro:Bund=light<CR>')
+map('n', '<leader>cl', ':set background=light<CR>')
 
 -- Liveplatform
 map('n', '<leader>fp', ':!yarn format<CR>')

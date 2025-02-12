@@ -11,22 +11,25 @@ ICON_ACTIVE_PADDING=15
 ICON="􀤆"
 case $1 in
     "1")
-        ICON=""
+        ICON="1️⃣"
         ;;
     "2")
-        ICON=""
+        ICON="2️⃣"
         ;;
     "3")
-        ICON=""
+        ICON="3️⃣"
         ;;
     "b")
-        ICON="􀤆"
+        ICON="🌎"
         ;;
     "t")
-        ICON=""
+        ICON="🖥️"
         ;;
     "m")
-        ICON="􀌧"
+        ICON="📟"
+        ;;
+    "p") # "p" for "photography"
+        ICON="📸"
         ;;
 esac
 

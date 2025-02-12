@@ -120,6 +120,7 @@ end
 local servers = {
   "bashls",
   "pyright",
+  "ruff",
   "clangd",
   "html",
   "cssls",
@@ -128,9 +129,11 @@ local servers = {
   "jsonls",
   "eslint",
   "terraformls",
+  "quick_lint_js",
   -- "ltex"
 
 }
+
 
 -- Call setup
 for _, lsp in ipairs(servers) do
@@ -163,14 +166,15 @@ lspconfig.lua_ls.setup {
   }
 }
 
--- lspconfig.tsserver.setup {
---   on_attach = on_attach,
---   capabilities = capabilities,
---   root_dir = lspconfig.util.root_pattern("package.json"),
---   flags = {
---     debounce_text_changes = 150,
---   },
--- }
+
+lspconfig.ts_ls.setup {
+  on_attach = on_attach,
+  capabilities = capabilities,
+  root_dir = lspconfig.util.root_pattern("package.json"),
+  flags = {
+    debounce_text_changes = 150,
+  },
+}
 
 lspconfig.denols.setup({
   on_attach = on_attach,

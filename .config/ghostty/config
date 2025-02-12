@@ -4,9 +4,9 @@ keybind = control+k=goto_split:top
 keybind = control+j=goto_split:bottom
 keybind = global:command+grave_accent=toggle_quick_terminal
 
-unfocused-split-opacity = 0.9
+unfocused-split-opacity = 0.96
 # unfocused-split-fill = gray
 
-
+background-opacity = 0.96
 
 theme = dark:catppuccin-macchiato,light:farmhouse-light
