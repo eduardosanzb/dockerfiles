@@ -2,6 +2,7 @@
 
 How to setup with stow in mac
 
+
 1. Install stow with brew
 ```bash
 brew install stow
