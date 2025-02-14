@@ -2,6 +2,8 @@ require('packer_init')
 
 require('plugins/snacks')
 
+require('plugins/codecompanion')
+
 require('core/chinook')
 require('core/commands')
 require('core/keybindings')
@@ -28,6 +30,7 @@ require('plugins/auto-cursorline')
 require('plugins/leap')
 require('plugins/lsp-saga')
 require('plugins/go')
+
 
 
 require('eduardosanzb')

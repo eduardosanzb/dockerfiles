@@ -17,4 +17,4 @@ auto_dark_mode.setup({
     -- end
 	end,
 })
-auto_dark_mode.init()
+-- auto_dark_mode.init()

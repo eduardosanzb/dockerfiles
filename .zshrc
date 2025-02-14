@@ -1,6 +1,5 @@
 export ZSH="$HOME/.oh-my-zsh"
 
-# Sourcing all the env variables like anthropic
 source $HOME/.env
 source $HOME/.local/bin/env
 
@@ -91,3 +90,15 @@ source $ZSH/oh-my-zsh.sh
 export PATH="$PATH:/Users/eduardosanchez/.lmstudio/bin"
 
 . "$HOME/.local/bin/env"
+
+# fnm
+FNM_PATH="/Users/eduardosanchez/Library/Application Support/fnm"
+if [ -d "$FNM_PATH" ]; then
+  export PATH="/Users/eduardosanchez/Library/Application Support/fnm:$PATH"
+  eval "`fnm env`"
+fi
+# The following lines have been added by Docker Desktop to enable Docker CLI completions.
+fpath=(/Users/eduardosanchez/.docker/completions $fpath)
+autoload -Uz compinit
+compinit
+# End of Docker CLI completions

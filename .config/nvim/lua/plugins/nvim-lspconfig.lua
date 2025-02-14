@@ -130,6 +130,7 @@ local servers = {
   "eslint",
   "terraformls",
   "quick_lint_js",
+  "lua_ls",
   -- "ltex"
 
 }

@@ -3,9 +3,6 @@
 # make sure it's executable with:
 # chmod +x ~/.config/sketchybar/plugins/aerospace.sh
 
-echo "aerospace.sh"
-echo "Arguments: $@"
-echo "FOCUSED_WORKSPACE: $FOCUSED_WORKSPACE"
 ICON_PADDING=5
 ICON_ACTIVE_PADDING=15
 ICON="􀤆"
@@ -23,10 +20,10 @@ case $1 in
         ICON="🌎"
         ;;
     "t")
-        ICON="🖥️"
+        ICON="🧑🏽‍💻"
         ;;
     "m")
-        ICON="📟"
+        ICON="💬"
         ;;
     "p") # "p" for "photography"
         ICON="📸"

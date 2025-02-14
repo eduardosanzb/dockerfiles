@@ -34,8 +34,6 @@ return packer.startup({
     use 'wbthomason/packer.nvim'
 
 
-    use 'folke/snacks.nvim'
-    use { "Morozzzko/git_browse.nvim" }
     -- nvim v0.7.2
     use({
       "kdheepak/lazygit.nvim",
@@ -57,7 +55,7 @@ return packer.startup({
     -- File explorer
     use 'kyazdani42/nvim-tree.lua'
     use 'kyazdani42/nvim-web-devicons'
-    use 'nvim-tree/nvim-web-devicons'
+    -- use 'nvim-tree/nvim-web-devicons'
 
 
     -- Indent line
@@ -240,26 +238,33 @@ return packer.startup({
 
     -- AI SHIT
     use 'github/copilot.vim'
-    use {
-      "yetone/avante.nvim",
-      build = "make BUILD_FROM_SOURCE=true",
-      lazy = false,
-      version = false,
-      BUILD_FROM_SOURCE = true,
-      config = function()
-        require("avante_lib").load()
-        require("avante").setup()
-      end,
+    use({
+      "olimorris/codecompanion.nvim",
       requires = {
-        "nvim-treesitter/nvim-treesitter",
-        "stevearc/dressing.nvim",
         "nvim-lua/plenary.nvim",
-        "MunifTanjim/nui.nvim",
-        --- The below dependencies are optional,
-        "nvim-tree/nvim-web-devicons", -- or echasnovski/mini.icons
-        "HakonHarnes/img-clip.nvim",
-      },
-    }
+        "nvim-treesitter/nvim-treesitter",
+      }
+    })
+    -- use {
+    --   "yetone/avante.nvim",
+    --   build = "make BUILD_FROM_SOURCE=true",
+    --   lazy = false,
+    --   version = false,
+    --   BUILD_FROM_SOURCE = true,
+    --   config = function()
+    --     require("avante_lib").load()
+    --     require("avante").setup()
+    --   end,
+    --   requires = {
+    --     "nvim-treesitter/nvim-treesitter",
+    --     "stevearc/dressing.nvim",
+    --     "nvim-lua/plenary.nvim",
+    --     "MunifTanjim/nui.nvim",
+    --     --- The below dependencies are optional,
+    --     "nvim-tree/nvim-web-devicons", -- or echasnovski/mini.icons
+    --     "HakonHarnes/img-clip.nvim",
+    --   },
+    -- }
 
     use {
       "nvim-neo-tree/neo-tree.nvim",

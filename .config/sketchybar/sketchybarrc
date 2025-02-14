@@ -1,6 +1,5 @@
 
 source "$CONFIG_DIR/colors.sh" # Loads all defined colors
-echo $ORANGE
 
 PLUGIN_DIR="$CONFIG_DIR/plugins"
 
@@ -23,23 +22,25 @@ sketchybar --default "${default[@]}"
 
 #### Aerospace
 sketchybar --add event aerospace_workspace_change
-for sid in $(aerospace list-workspaces --all); do
+# I could reverse but looks weird
+#spaces=$(aerospace list-workspaces --all|tail -r)
+spaces=$(aerospace list-workspaces --all)
+for sid in $spaces; do
+    upper_sid=$(echo "$sid" | tr '[:lower:]' '[:upper:]')
+    upper_sid=""
     sketchybar --add item space.$sid left \
         --subscribe space.$sid aerospace_workspace_change \
         --set space.$sid \
-        background.color=0x44ffffff \
+        background.color=$POPUP_BACKGROUND_COLOR \
         background.corner_radius=5 \
-        background.height=20 \
+        background.height=30 \
         background.drawing=off \
-        label="$sid" \
+        label="$upper_sid" \
         click_script="aerospace workspace $sid" \
         script="$CONFIG_DIR/plugins/aerospace.sh $sid"
 done
 
-##### Adding Left Items #####
-# We add some regular items to the left side of the bar, where
-# only the properties deviating from the current defaults need to be set
-
+### Current app
 sketchybar --add item chevron left \
            --set chevron icon= label.drawing=off \
            --add item front_app left \
@@ -47,8 +48,9 @@ sketchybar --add item chevron left \
            --subscribe front_app front_app_switched
 
 
+### Right
 sketchybar --add item clock right \
-           --set clock update_freq=10 icon=  script="$PLUGIN_DIR/clock.sh" \
+           --set clock update_freq=5 icon=  script="$PLUGIN_DIR/clock.sh" icon.color=$WHITE \
            --add item volume right \
            --set volume script="$PLUGIN_DIR/volume.sh" \
            --subscribe volume volume_change \
@@ -56,6 +58,6 @@ sketchybar --add item clock right \
            --set battery update_freq=120 script="$PLUGIN_DIR/battery.sh" \
            --subscribe battery system_woke power_source_change \
            --add item gh_status right \
-           --set gh_status update_freq=60 icon=􁓝  script="$PLUGIN_DIR/github.sh"
+           --set gh_status update_freq=60  script="$PLUGIN_DIR/github.sh"
 
 sketchybar --update
