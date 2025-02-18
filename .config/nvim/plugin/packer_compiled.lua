@@ -236,7 +236,7 @@ _G.packer_plugins = {
   ["lspkind.nvim"] = {
     loaded = true,
     path = "/Users/eduardosanchez/.local/share/nvim/site/pack/packer/start/lspkind.nvim",
-    url = "https://github.com//onsails/lspkind.nvim"
+    url = "https://github.com/onsails/lspkind.nvim"
   },
   ["lspsaga.nvim"] = {
     loaded = true,
