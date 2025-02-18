@@ -1,4 +1,4 @@
-## Eduardosanzb dotfiles in dockerfiles
+# Eduardosanzb dotfiles in dockerfiles
 
 How to setup with stow in mac
 
@@ -23,3 +23,4 @@ cd dockerfiles
 stow -t $HOME .
 ```
 
+#

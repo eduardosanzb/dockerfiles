@@ -1,6 +1,7 @@
 require('packer_init')
 
 require('plugins/snacks')
+require('plugins/miniai')
 
 require('plugins/codecompanion')
 

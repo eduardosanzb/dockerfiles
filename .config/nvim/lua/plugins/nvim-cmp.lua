@@ -16,8 +16,29 @@ if not luasnip_status_ok then
   return
 end
 
+-- Formatting the box
+-- https://github.com/onsails/lspkind.nvim
+local lspkind = require('lspkind')
+
+
 vim.g['copilot_no_tab_map'] = true
 vim.g['copilot_assume_mapped'] = true
+
+
+local function get_current_date()
+  return os.date("%Y-%m-%d")
+end
+
+local ls = luasnip
+local s = ls.snippet
+local t = ls.text_node
+local f = ls.function_node
+luasnip.add_snippets("all", {
+  s("@today", {
+    t("## "),
+    f(get_current_date),
+  })
+})
 
 cmp.setup {
   -- Load snippet support
@@ -69,18 +90,29 @@ cmp.setup {
     end
   },
 
+  formatting = {
+    format = lspkind.cmp_format {
+      mode = "symbol_text",
+      menu = {
+        nvim_lsp = "[LSP]",
+        ultisnips = "[US]",
+        path = "[Path]",
+        buffer = "[Buffer]",
+        emoji = "[Emoji]",
+        omni = "[Omni]",
+      },
+      show_labelDetails = true,
+      maxwidth = 40,
+      ellipsis_char = "...",
+    },
+  },
+
   sources = {
     { name = 'luasnip' },
     { name = 'nvim_lsp' },
     { name = 'path' },
     { name = 'buffer' },
+    { name = 'render-markdown' },
+    { name = 'emoji' },
   },
 }
-
-require("luasnip.loaders.from_vscode").lazy_load({ paths = { "/Users/eduardo.bautista/.config/nvim/lua/eduardosanzb/snippets" } })
-require("luasnip.loaders.from_vscode").lazy_load()
-
--- local capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
--- require('lspconfig')['denols'].setup {
---   capabilities = capabilities
--- }

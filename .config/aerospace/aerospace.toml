@@ -66,19 +66,17 @@ preset = 'qwerty'
 #                 See: https://nikitabobko.github.io/AeroSpace/guide#assign-workspaces-to-monitors
 [gaps]
 inner.horizontal = 10
-inner.vertical =   10
-outer.left =       10
-outer.bottom =     10
-outer.top =        10
-outer.right =      10
+inner.vertical   = 5
+outer.top        = [{monitor."Built-in Retina Display" = 10 },{monitor."LG HDR 4K"=40},40 ]
+outer.bottom     = 10
+outer.left       = 5
+outer.right      = 5
 
 # 'main' binding mode declaration
 # See: https://nikitabobko.github.io/AeroSpace/guide#binding-modes
 # 'main' binding mode must be always presented
 # Fallback value (if you omit the key): mode.main.binding = {}
 [mode.main.binding]
-
-
 
 
 # All possible keys:
@@ -130,7 +128,7 @@ alt-shift-equal = 'resize smart +50'
 # See: https://nikitabobko.github.io/AeroSpace/commands#workspace
 alt-1 = 'workspace 1'
 alt-2 = 'workspace 2'
-alt-3 = 'workspace 3'
+alt-c = 'workspace c'
 alt-b = 'workspace b'
 alt-t = 'workspace t'
 alt-m = 'workspace m'
@@ -139,7 +137,7 @@ alt-p = 'workspace p'
 # See: https://nikitabobko.github.io/AeroSpace/commands#move-node-to-workspace
 alt-shift-1 = 'move-node-to-workspace 1'
 alt-shift-2 = 'move-node-to-workspace 2'
-alt-shift-3 = 'move-node-to-workspace 3'
+alt-shift-c = 'move-node-to-workspace c'
 alt-shift-b = 'move-node-to-workspace b'
 alt-shift-t = 'move-node-to-workspace t'
 alt-shift-m = 'move-node-to-workspace m'
@@ -149,6 +147,8 @@ alt-shift-p = 'move-node-to-workspace p'
 alt-tab = 'workspace-back-and-forth'
 # See: https://nikitabobko.github.io/AeroSpace/commands#move-workspace-to-monitor
 alt-shift-tab = 'move-workspace-to-monitor --wrap-around next'
+alt-ctrl-h = 'workspace prev'
+alt-ctrl-l = 'workspace next'
 
 # See: https://nikitabobko.github.io/AeroSpace/commands#mode
 alt-shift-semicolon = 'mode service'
@@ -206,3 +206,8 @@ run = 'move-node-to-workspace p'
   if.app-id = 'com.apple.ActivityMonitor'
   check-further-callbacks = true
   run = ['layout floating']  # The callback itself
+
+[[on-window-detected]]
+  if.app-id = 'com.hnc.Discord'
+  check-further-callbacks = true
+  run = 'move-node-to-workspace m'
