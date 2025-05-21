@@ -1,4 +1,16 @@
 require("codecompanion").setup({
+  opts = {
+    send_code = true,
+  },
+  display = {
+    action_palette = {
+      provider = "telescope",
+    },
+    chat = {
+      show_header_separator = false,
+      show_settings = true,
+    },
+  },
   strategies = {
     chat = {
       adapter = "my_openai",
@@ -6,80 +18,87 @@ require("codecompanion").setup({
     inline = {
       adapter = "my_openai",
     },
+    cmd = {
+      adapter = "my_openai",
+    },
   },
   adapters = {
-    ollama = function()
+    opts = {
+      show_defaults = false,
+    },
+
+    my_openai = function()
       return require("codecompanion.adapters").extend("openai_compatible", {
         env = {
           url = "http://localhost:1234",
-          api_key = "OpenAI_API_KEY",
           chat_url = "/v1/chat/completions",
-        },
-      })
-    end,
-
-    my_openai =  function()
-      return require("codecompanion.adapters").extend("openai_compatible", {
-        env = {
-          url = "http://localhost:1234", -- optional: default value is ollama url http://127.0.0.1:11434
-          chat_url = "/v1/chat/completions", -- optional: default value, override if different
         },
         schema = {
           model = {
-            default = "mlx-community/qwen2.5-coder-32b-instruct",
-          },
-          temperature = {
-            order = 2,
-            mapping = "parameters",
-            type = "number",
-            optional = true,
-            default = 0.8,
-            desc = "What sampling temperature to use, between 0 and 2. Higher values like 0.8 will make the output more random, while lower values like 0.2 will make it more focused and deterministic. We generally recommend altering this or top_p but not both.",
-            validate = function(n)
-              return n >= 0 and n <= 2, "Must be between 0 and 2"
-            end,
-          },
-          max_completion_tokens = {
-            order = 3,
-            mapping = "parameters",
-            type = "integer",
-            optional = true,
-            default = nil,
-            desc = "An upper bound for the number of tokens that can be generated for a completion.",
-            validate = function(n)
-              return n > 0, "Must be greater than 0"
-            end,
-          },
-          stop = {
-            order = 4,
-            mapping = "parameters",
-            type = "string",
-            optional = true,
-            default = nil,
-            desc = "Sets the stop sequences to use. When this pattern is encountered the LLM will stop generating text and return. Multiple stop patterns may be set by specifying multiple separate stop parameters in a modelfile.",
-            validate = function(s)
-              return s:len() > 0, "Cannot be an empty string"
-            end,
-          },
-          logit_bias = {
-            order = 5,
-            mapping = "parameters",
-            type = "map",
-            optional = true,
-            default = nil,
-            desc = "Modify the likelihood of specified tokens appearing in the completion. Maps tokens (specified by their token ID) to an associated bias value from -100 to 100. Use https://platform.openai.com/tokenizer to find token IDs.",
-            subtype_key = {
-              type = "integer",
-            },
-            subtype = {
-              type = "integer",
-              validate = function(n)
-                return n >= -100 and n <= 100, "Must be between -100 and 100"
-              end,
-            },
+            -- default = "qwen3-30b-a3b-128k@q5_k_m"
+            default = "qwen3-32b-128k"
           },
         },
       })
     end,
   },
 })
+
+-- lets move minuet from the packer to here
+-- require('minuet').setup({
+--   cmp = {
+--     enabled = false
+--   },
+--   provider = 'openai_fim_compatible',
+--   n_completions = 1,
+--   notify = 'warn',
+--   context_window = 16000,
+--   throttle = 500,
+--   debounce = 400,
+--   request_timeout = 3,
+--   provider_options = {
+--     openai_fim_compatible = {
+--       stream = true,
+--       api_key = 'TERM',
+--       name = 'lmstudio',
+--       end_point = 'http://localhost:1234/v1/completions',
+--       -- model = 'glm-4-32b-0414',
+--       -- model = 'glm-4-32b-0414',
+--       model = 'qwen3-30b-a3b-mlx',
+--       optional = {
+--         max_tokens = 200,
+--         top_p = 0.9,
+--       },
+--       template = {
+--         prompt = function(context_before_cursor, context_after_cursor, _)
+--           return '/no-think'
+--               ..'<|fim_prefix|>'
+--               .. context_before_cursor
+--               .. '<|fim_suffix|>'
+--               .. context_after_cursor
+--               .. '<|fim_middle|>'
+--         end,
+--         suffix = false,
+--       },
+--     },
+--   },
+--   virtualtext = {
+--     enabled = false,
+--     auto_trigger_ft = {  },
+--     keymap = {
+--       -- accept whole completion
+--       accept = '<S-/>',
+--       -- accept one line
+--       -- accept_line = '<S-/>',
+--       -- accept n lines (prompts for number)
+--       -- e.g. "A-z 2 CR" will accept 2 lines
+--       accept_n_lines = '<A-z>',
+--       -- Cycle to prev completion item, or manually invoke completion
+--       prev = '<A-[>',
+--       -- Cycle to next completion item, or manually invoke completion
+--       next = '<A-]>',
+--       dismiss = '<A-e>',
+--       -- lets change dismiss to esc
+--     },
+--   },
+-- })

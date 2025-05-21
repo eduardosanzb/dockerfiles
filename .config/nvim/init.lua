@@ -44,3 +44,4 @@ require('core/autocommands')
 
 -- Copilot setup
 vim.cmd([[ let g:copilot_filetypes = {  'markdown': v:true, 'yaml': v:true } ]])
+vim.g.copilot_enabled = false

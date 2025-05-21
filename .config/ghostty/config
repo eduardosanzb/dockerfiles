@@ -1,7 +1,7 @@
-keybind = control+l=goto_split:right
-keybind = control+h=goto_split:left
-keybind = control+k=goto_split:top
-keybind = control+j=goto_split:bottom
+keybind = cmd+l=goto_split:right
+keybind = cmd+h=goto_split:left
+keybind = cmd+k=goto_split:top
+keybind = cmd+j=goto_split:bottom
 keybind = global:command+grave_accent=toggle_quick_terminal
 
 unfocused-split-opacity = 0.96
@@ -10,3 +10,4 @@ unfocused-split-opacity = 0.96
 background-opacity = 0.96
 
 theme = dark:catppuccin-macchiato,light:farmhouse-light
+font-size = 20

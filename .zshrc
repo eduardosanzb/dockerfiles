@@ -1,5 +1,7 @@
 export ZSH="$HOME/.oh-my-zsh"
 
+export AWS_DEFAULT_PROFILE=staging
+
 source $HOME/.env
 source $HOME/.local/bin/env
 
@@ -33,6 +35,7 @@ alias vim=nvim
 alias cat=bat
 alias kap="kubectl apply -f"
 alias edukey="sh ~/.config/keyboard/edukey.sh"
+alias tailscale="/Applications/Tailscale.app/Contents/MacOS/Tailscale"
 autoload compinit
 
 # AUTOCOMPLETION SETUP (Corrected)
@@ -63,10 +66,7 @@ export GOPATH=$HOME/go
 export PATH=$PATH:$GOPATH/bin
 
 
-# GOOGLE CLOUD SDK
-# The next line updates PATH for the Google Cloud SDK.
-if [ -f '/Users/eduardosanchez/Downloads/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/eduardosanchez/Downloads/google-cloud-sdk/path.zsh.inc'; fi
-# The next line enables shell command completion for gcloud.
+# GOOGLE CLOUD SDK# The next line enables shell command completion for gcloud.
 if [ -f '/Users/eduardosanchez/Downloads/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/eduardosanchez/Downloads/google-cloud-sdk/completion.zsh.inc'; fi
 
 
@@ -82,6 +82,9 @@ export FNM_COREPACK_ENABLED="false"
 export FNM_RESOLVE_ENGINES="true"
 export FNM_ARCH="arm64"
 rehash
+
+# imagemagick export used for neovim image rendering
+export DYLD_FALLBACK_LIBRARY_PATH="$(brew --prefix)/lib:$DYLD_FALLBACK_LIBRARY_PATH"
 
 #FINAL SOURCE
 source $ZSH/oh-my-zsh.sh
@@ -102,3 +105,17 @@ fpath=(/Users/eduardosanchez/.docker/completions $fpath)
 autoload -Uz compinit
 compinit
 # End of Docker CLI completions
+
+# pnpm
+export PNPM_HOME="/Users/eduardosanchez/Library/pnpm"
+case ":$PATH:" in
+  *":$PNPM_HOME:"*) ;;
+  *) export PATH="$PNPM_HOME:$PATH" ;;
+esac
+# pnpm end
+
+# The next line updates PATH for the Google Cloud SDK.
+if [ -f '/Users/eduardosanchez/Downloads/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/eduardosanchez/Downloads/google-cloud-sdk/path.zsh.inc'; fi
+
+# The next line enables shell command completion for gcloud.
+if [ -f '/Users/eduardosanchez/Downloads/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/eduardosanchez/Downloads/google-cloud-sdk/completion.zsh.inc'; fi

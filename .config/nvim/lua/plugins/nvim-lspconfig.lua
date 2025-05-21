@@ -70,22 +70,22 @@ local on_attach = function(client, bufnr)
   -- end
 
   --[[ Avoid clashes between deno & tsserver ]]
-  local active_clients = vim.lsp.get_active_clients()
-  if client.name == 'denols' then
-    for _, client_ in pairs(active_clients) do
-      -- stop tsserver if denols is already active
-      if client_.name == 'tsserver' then
-        client_.stop()
-      end
-    end
-  elseif client.name == 'tsserver' then
-    for _, client_ in pairs(active_clients) do
-      -- prevent tsserver from starting if denols is already active
-      if client_.name == 'denols' then
-        client.stop()
-      end
-    end
-  end
+  -- local active_clients = vim.lsp.get_active_clients()
+  -- if client.name == 'denols' then
+  --   for _, client_ in pairs(active_clients) do
+  --     -- stop tsserver if denols is already active
+  --     if client_.name == 'tsserver' then
+  --       client_.stop()
+  --     end
+  --   end
+  -- elseif client.name == 'tsserver' then
+  --   for _, client_ in pairs(active_clients) do
+  --     -- prevent tsserver from starting if denols is already active
+  --     if client_.name == 'denols' then
+  --       client.stop()
+  --     end
+  --   end
+  -- end
   -- Enable completion triggered by <c-x><c-o>
   vim.api.nvim_buf_set_option(bufnr, "omnifunc", "v:lua.vim.lsp.omnifunc")
 
@@ -125,9 +125,8 @@ local servers = {
   "html",
   "cssls",
   "graphql",
-  "denols",
   "jsonls",
-  "eslint",
+  -- "eslint",
   "terraformls",
   "quick_lint_js",
   "lua_ls",
@@ -168,23 +167,15 @@ lspconfig.lua_ls.setup {
 }
 
 
-lspconfig.ts_ls.setup {
-  on_attach = on_attach,
-  capabilities = capabilities,
-  root_dir = lspconfig.util.root_pattern("package.json"),
-  flags = {
-    debounce_text_changes = 150,
-  },
-}
+-- lspconfig.ts_ls.setup {
+--   on_attach = on_attach,
+--   capabilities = capabilities,
+--   root_dir = lspconfig.util.root_pattern("package.json"),
+--   flags = {
+--     debounce_text_changes = 150,
+--   },
+-- }
 
-lspconfig.denols.setup({
-  on_attach = on_attach,
-  capabilities = capabilities,
-  root_dir = lspconfig.util.root_pattern("deno.json", "deno.jsonc"),
-  flags = {
-    debounce_text_changes = 150,
-  },
-})
 
 -- Golang
 lspconfig.golangci_lint_ls.setup{}

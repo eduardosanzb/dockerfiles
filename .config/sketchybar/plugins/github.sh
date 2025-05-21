@@ -16,8 +16,6 @@ if [ $incidents -gt 0 ]; then
   color=$ORANGE
   if [ $highest_impact = "minor" ]; then
     color=$YELLOW
-    echo 'inside minor'
-    echo $color
   elif [ $highest_impact == "major" ]; then
     color=$ORANGE
   elif [ $highest_impact == "critical" ]; then

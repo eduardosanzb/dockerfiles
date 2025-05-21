@@ -3,6 +3,24 @@ vim.cmd('highlight ColorColumn ctermbg=1 guibg=red')
 -- vim.cmd('colorscheme xcode')
 vim.cmd('colorscheme catppuccin')
 
+-- configure catppuccin
+local catppuccin = require("catppuccin")
+
+catppuccin.setup({
+   background = {
+        light = "latte",
+        dark = "macchiato",
+    },
+    transparent_background = false, -- disables setting the background color.
+    show_end_of_buffer = true, -- shows the '~' characters after the end of buffers
+    term_colors = true, -- sets terminal colors (e.g. `g:terminal_color_0`)
+    dim_inactive = {
+        enabled = true, -- dims the background color of inactive window
+        shade = "dark",
+        percentage = 0.35, -- percentage of the shade to apply to the inactive window
+    },
+})
+
 
 -- Transparency setup
 -- vim.api.nvim_create_autocmd("ColorScheme", {

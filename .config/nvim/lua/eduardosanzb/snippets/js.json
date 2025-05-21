@@ -12,7 +12,7 @@
     "body": [
       "console.log($1)"
     ],
-    "description": "Console.log with object"
+    "description": "Console log the target"
   },
   "console-inspect":{
     "prefix": ["clgi"],

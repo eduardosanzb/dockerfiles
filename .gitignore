@@ -7,3 +7,4 @@ ssh/
 
 aws/credentials
 .config/.DS_Store
+.config/raycast/extensions

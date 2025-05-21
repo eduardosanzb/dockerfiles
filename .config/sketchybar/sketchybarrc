@@ -3,6 +3,13 @@ source "$CONFIG_DIR/colors.sh" # Loads all defined colors
 
 PLUGIN_DIR="$CONFIG_DIR/plugins"
 
+## https://github.com/joncrangle/sketchybar-system-stats
+
+killall stats_provider
+$CONFIG_DIR/sketchybar-system-stats/target/release/stats_provider --cpu usage temperature \
+--disk usage \
+--memory ram_used ram_usage &
+
 
 sketchybar --bar position=top height=40 blur_radius=30 color=0x40000000
 
@@ -58,6 +65,19 @@ sketchybar --add item clock right \
            --set battery update_freq=120 script="$PLUGIN_DIR/battery.sh" \
            --subscribe battery system_woke power_source_change \
            --add item gh_status right \
-           --set gh_status update_freq=60  script="$PLUGIN_DIR/github.sh"
+           --set gh_status update_freq=60  script="$PLUGIN_DIR/github.sh" \
+
+
+### Stats
+sketchybar --add item disk_usage right \
+           --set disk_usage icon=🗄️ script="sketchybar --set disk_usage label=\$DISK_USAGE" \
+           --subscribe disk_usage system_stats\
+           --add item mem_usage right \
+           --set mem_usage icon=💾 script="sketchybar --set mem_usage label=\$RAM_USED" \
+           --subscribe mem_usage system_stats \
+           --add item cpu_temp right \
+           --set cpu_temp icon=🔥 script="sketchybar --set cpu_temp label=\$CPU_TEMP" \
+           --subscribe cpu_temp system_stats \
+
 
 sketchybar --update

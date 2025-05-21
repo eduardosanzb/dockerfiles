@@ -26,16 +26,31 @@ nvim_treesitter.setup {
     enable = true,
   },
 
+  indent = {
+    enable = true,
+  },
+
   additional_vim_regex_highlighting = false,
 }
 
 --folding based on treesitter
-vim.api.nvim_exec([[
-  set foldmethod=expr
-  set foldexpr=nvim_treesitter#foldexpr()
-  set foldlevel=99
-]], true)
+-- vim.api.nvim_exec([[
+--   set foldmethod=expr
+--   set foldexpr=nvim_treesitter#foldexpr()
+--   set foldlevel=99
+-- ]], true)
+-- fold settings
 
+vim.wo.foldmethod = "manual"
+vim.wo.foldexpr = "nvim_treesitter#foldexpr()"
+vim.wo.foldtext =
+    [[substitute(getline(v:foldstart),'\\t',repeat('\ ',&tabstop),'g').'...'.trim(getline(v:foldend)) ]]
+vim.wo.fillchars = "fold:\\"
+vim.wo.foldnestmax = 3
+vim.wo.foldminlines = 1
+
+
+vim.treesitter.language.register('markdown', 'octo')
 
 -- Adding: https://github.com/MichaHoffmann/tree-sitter-hcl
 -- url: https://github.com/nvim-treesitter/nvim-treesitter#adding-parsers

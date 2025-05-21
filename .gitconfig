@@ -1,8 +1,8 @@
 # This is Git's per-user configuration file.
 [user]
 # Please adapt and uncomment the following lines:
-name = Eduardo Sanchez
-email = eduardosanzb@gmail.com
+	name = Eduardo Bautista
+  email = eduardosanzb@gmail.com
 [alias]
   s = status
   a = add
@@ -10,7 +10,7 @@ email = eduardosanzb@gmail.com
   cam = commit -am
   pom = push origin master
   cob = checkout -b
-  l = checkout -l
+  l = checkout -
   b = checkout
 [merge]
   ff = false
@@ -18,3 +18,4 @@ email = eduardosanzb@gmail.com
   ff = only
 [push]
   autoSetupRemote = true
+

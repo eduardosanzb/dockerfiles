@@ -107,7 +107,8 @@ outer.right      = 5
 alt-slash = 'layout tiles horizontal vertical'
 alt-comma = 'layout accordion horizontal vertical'
 
-alt-f = 'fullscreen'
+cmd-shift-f = 'fullscreen'
+
 
 # See: https://nikitabobko.github.io/AeroSpace/commands#focus
  alt-h = 'focus left'
@@ -128,11 +129,13 @@ alt-shift-equal = 'resize smart +50'
 # See: https://nikitabobko.github.io/AeroSpace/commands#workspace
 alt-1 = 'workspace 1'
 alt-2 = 'workspace 2'
-alt-c = 'workspace c'
-alt-b = 'workspace b'
-alt-t = 'workspace t'
-alt-m = 'workspace m'
-alt-p = 'workspace p'
+alt-c = 'workspace c' # Calendar
+alt-b = 'workspace b' # Browser
+alt-t = 'workspace t' # Terminal
+alt-m = 'workspace m' # Messages
+alt-p = 'workspace p' # Personal
+alt-d = 'workspace d' # Databases
+alt-n = 'workspace n' # Notes
 
 # See: https://nikitabobko.github.io/AeroSpace/commands#move-node-to-workspace
 alt-shift-1 = 'move-node-to-workspace 1'
@@ -142,6 +145,8 @@ alt-shift-b = 'move-node-to-workspace b'
 alt-shift-t = 'move-node-to-workspace t'
 alt-shift-m = 'move-node-to-workspace m'
 alt-shift-p = 'move-node-to-workspace p'
+alt-shift-d = 'move-node-to-workspace d'
+alt-shift-n = 'move-node-to-workspace n'
 
 # See: https://nikitabobko.github.io/AeroSpace/commands#workspace-back-and-forth
 alt-tab = 'workspace-back-and-forth'
@@ -177,13 +182,13 @@ shift-down = ['volume set 0', 'mode main']
 
 # The callbacks need to be at the end
 
-[[on-window-detected]]
-if.app-id = 'com.google.Chrome'
-run = 'move-node-to-workspace b'
+# [[on-window-detected]]
+# if.app-id = 'com.google.Chrome'
+# run = 'move-node-to-workspace b'
 
-[[on-window-detected]]
-if.app-id = 'com.mitchellh.ghostty'
-run = 'move-node-to-workspace t'
+# [[on-window-detected]]
+# if.app-id = 'com.mitchellh.ghostty'
+# run = 'move-node-to-workspace t'
 
 [[on-window-detected]]
 if.app-id = 'net.whatsapp.WhatsApp'
@@ -195,7 +200,7 @@ run = 'move-node-to-workspace m'
 
 [[on-window-detected]]
 if.app-id = 'com.adobe.lightroomCC'
-run = 'move-node-to-workspace p'
+run = 'move-node-to-workspace f'
 
 [[on-window-detected]]
   if.app-id = 'cc.ffitch.shottr'
@@ -211,3 +216,29 @@ run = 'move-node-to-workspace p'
   if.app-id = 'com.hnc.Discord'
   check-further-callbacks = true
   run = 'move-node-to-workspace m'
+[[on-window-detected]]
+  if.app-id = 'zoom.us'
+  check-further-callbacks = true
+  run = 'move-node-to-workspace m'
+
+[[on-window-detected]]
+  if.app-id = 'com.apple.iCal'
+  check-further-callbacks = true
+  run = 'move-node-to-workspace c'
+
+[[on-window-detected]]
+  if.app-id = 'com.tinyapp.TablePlus'
+  check-further-callbacks = true
+  run = 'move-node-to-workspace d'
+
+[[on-window-detected]]
+  if.app-id = 'com.linguee.DeepLCopyTranslator'
+  check-further-callbacks = true
+  run = 'layout floating'
+
+[[on-window-detected]]
+  if.app-id = 'notion.id'
+  check-further-callbacks = true
+  run = 'move-node-to-workspace n'
+
+

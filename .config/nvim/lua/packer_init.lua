@@ -34,6 +34,7 @@ return packer.startup({
     use 'wbthomason/packer.nvim'
 
 
+
     -- nvim v0.7.2
     use({
       "kdheepak/lazygit.nvim",
@@ -44,6 +45,11 @@ return packer.startup({
 
     -- super cool delete inside bla blabal
     use 'echasnovski/mini.ai'
+    use({
+      'echasnovski/mini.nvim',
+      branch = 'stable',
+    })
+
 
 
     -- The bundle of plugins
@@ -59,6 +65,44 @@ return packer.startup({
     use 'kyazdani42/nvim-tree.lua'
     use 'kyazdani42/nvim-web-devicons'
     -- use 'nvim-tree/nvim-web-devicons'
+
+    -- Yankdb
+    use {
+      "AckslD/nvim-neoclip.lua",
+      requires = {
+        { 'kkharji/sqlite.lua',           module = 'sqlite' },
+        { 'nvim-telescope/telescope.nvim' },
+      },
+      config = function()
+        require('neoclip').setup()
+      end,
+    }
+
+
+    -- timetracker
+    use {
+      "3rd/time-tracker.nvim",
+      requires = {
+        "3rd/sqlite.nvim",
+      },
+      opts = {
+        data_file = vim.fn.stdpath("data") .. "/time-tracker.db",
+      },
+      config = function()
+        require("time-tracker").setup({
+          data_file = vim.fn.stdpath("data") .. "/time-tracker.db",
+          tracking_events = { "BufEnter", "BufWinEnter", "CursorMoved", "CursorMovedI", "WinScrolled" },
+          tracking_timeout_seconds = 5 * 60, -- 5 minutes
+        })
+      end,
+    }
+    use { "lowitea/aw-watcher.nvim",
+      opts = { -- required, but can be empty table: {}
+      },
+      config = function()
+        require("aw_watcher").setup({})
+      end,
+    }
 
 
     -- Indent line
@@ -138,6 +182,13 @@ return packer.startup({
     use 'jose-elias-alvarez/null-ls.nvim'
     use 'MunifTanjim/eslint.nvim'
     use('MunifTanjim/prettier.nvim')
+    use {
+      "pmizio/typescript-tools.nvim",
+      requires = { "nvim-lua/plenary.nvim", "neovim/nvim-lspconfig" },
+      config = function()
+        require("typescript-tools").setup {}
+      end,
+    }
 
     use 'sigmasd/deno-nvim'
 
@@ -151,9 +202,10 @@ return packer.startup({
         'hrsh7th/cmp-path',
         'hrsh7th/cmp-buffer',
         'saadparwaiz1/cmp_luasnip',
-        'hrsh7th/vim-vsnip'
+        'hrsh7th/vim-vsnip',
       },
     }
+    use({ "petertriho/cmp-git", requires = "nvim-lua/plenary.nvim" })
 
     use { 'saadparwaiz1/cmp_luasnip' }
     use "rafamadriz/friendly-snippets"
@@ -197,6 +249,16 @@ return packer.startup({
     -- use {'mfussenegger/nvim-dap', requires = { "theHamsta/nvim-dap-virtual-text", "nvim-neotest/nvim-nio" }}
 
 
+    --Databases
+    use {
+      'kopecmaciej/vi-mongo.nvim',
+      config = function()
+        require('vi-mongo').setup()
+      end
+    }
+
+
+
 
 
     -- Golang
@@ -215,10 +277,115 @@ return packer.startup({
       end
     }
 
+    use {
+      "3rd/image.nvim",
+      build = false, -- so that it doesn't build the rock https://github.com/3rd/image.nvim/issues/91#issuecomment-2453430239
+      opts = {},
+      config = function()
+        require("image").setup({
+          backend = "kitty",
+          processor = "magick_cli", -- or "magick_cli"
+          integrations = {
+            markdown = {
+              enabled = true,
+              clear_in_insert_mode = false,
+              download_remote_images = true,
+              only_render_image_at_cursor = false,
+              floating_wsindows = false,             -- if true, images will be rendered in floating markdown windows
+              filetypes = { "markdown", "vimwiki" }, -- markdown extensions (ie. quarto) can go here
+            },
+            neorg = {
+              enabled = true,
+              filetypes = { "norg" },
+            },
+            typst = {
+              enabled = true,
+              filetypes = { "typst" },
+            },
+            html = {
+              enabled = false,
+            },
+            css = {
+              enabled = false,
+            },
+          },
+          max_width = nil,
+          max_height = nil,
+          max_width_window_percentage = nil,
+          max_height_window_percentage = 50,
+          window_overlap_clear_enabled = false,                                               -- toggles images when windows are overlapped
+          window_overlap_clear_ft_ignore = { "cmp_menu", "cmp_docs", "snacks_notif", "scrollview", "scrollview_sign" },
+          editor_only_render_when_focused = false,                                            -- auto show/hide images when the editor gains/looses focus
+          tmux_show_only_in_active_window = false,                                            -- auto show/hide images in the correct Tmux window (needs visual-activity off)
+          hijack_file_patterns = { "*.png", "*.jpg", "*.jpeg", "*.gif", "*.webp", "*.avif" }, -- render image files as images when opened
+        })
+      end,
+    }
+
+    use {
+      "3rd/diagram.nvim",
+      requires = {
+        "3rd/image.nvim",
+      },
+      opts = { -- you can just pass {}, defaults below
+        renderer_options = {
+          mermaid = {
+            background = nil, -- nil | "transparent" | "white" | "#hex"
+            theme = nil,      -- nil | "default" | "dark" | "forest" | "neutral"
+            scale = 1,        -- nil | 1 (default) | 2  | 3 | ...
+            width = nil,      -- nil | 800 | 400 | ...
+            height = nil,     -- nil | 600 | 300 | ...
+          },
+          plantuml = {
+            charset = nil,
+          },
+          d2 = {
+            theme_id = nil,
+            dark_theme_id = nil,
+            scale = nil,
+            layout = nil,
+            sketch = nil,
+          },
+          gnuplot = {
+            size = nil,  -- nil | "800,600" | ...
+            font = nil,  -- nil | "Arial,12" | ...
+            theme = nil, -- nil | "light" | "dark" | custom theme string
+          },
+        }
+      },
+      config = function()
+        require("diagram").setup({
+          integrations = {
+            require("diagram.integrations.markdown"),
+            require("diagram.integrations.neorg"),
+          },
+          renderer_options = {
+            mermaid = {
+              theme = "forest",
+            },
+            plantuml = {
+              charset = "utf-8",
+            },
+            d2 = {
+              theme_id = 1,
+            },
+            gnuplot = {
+              theme = "dark",
+              size = "800,600",
+            },
+          },
+        })
+      end,
+    }
+
 
     use { 'anuvyklack/pretty-fold.nvim',
       config = function()
-        require('pretty-fold').setup()
+        require('pretty-fold').setup({
+          fold_closed = '', -- Closed fold icon
+          fold_opened = '', -- Opened fold icon
+          highlight = "Comment", -- Color for fold text
+        })
       end
     }
     use { 'anuvyklack/fold-preview.nvim',
@@ -236,12 +403,58 @@ return packer.startup({
         'kyazdani42/nvim-web-devicons',
       },
       config = function()
-        require "octo".setup()
+        require "octo".setup({
+          -- SSH aliases. e.g. `ssh_aliases = {["github.com-work"] = "github.com"}`. The key part will be interpreted as an anchored Lua pattern.
+          ssh_aliases = {
+            ["github.com"] = "github.com",
+            ["github.com-trawa"] = "github.com",
+          },
+
+        })
       end
     }
 
     -- AI SHIT
     use 'github/copilot.vim'
+    use 'tzachar/cmp-ai'
+    local function local_llm_streaming_handler(chunk, ctx, F)
+      if not chunk then
+        return ctx.assistant_output
+      end
+      local tail = chunk:sub(-1, -1)
+      if tail:sub(1, 1) ~= "}" then
+        ctx.line = ctx.line .. chunk
+      else
+        ctx.line = ctx.line .. chunk
+        local status, data = pcall(vim.fn.json_decode, ctx.line)
+        if not status or not data.message.content then
+          return ctx.assistant_output
+        end
+        ctx.assistant_output = ctx.assistant_output .. data.message.content
+        F.WriteContent(ctx.bufnr, ctx.winid, data.message.content)
+        ctx.line = ""
+      end
+      return ctx.assistant_output
+    end
+
+    local function local_llm_parse_handler(chunk)
+      local assistant_output = chunk.message.content
+      return assistant_output
+    end
+
+    use({
+      "Kurama622/llm.nvim",
+      requires = { "nvim-lua/plenary.nvim", "MunifTanjim/nui.nvim" },
+      config = function()
+        require("llm").setup({
+          url = "http://127.0.0.1:1234/v1/chat/completions",
+          model = "mlx-community/glm-4-32b-0414",
+          api_type = "openai",
+          streaming_handler = local_llm_parse_handler
+        })
+      end,
+    })
+
     use({
       "olimorris/codecompanion.nvim",
       requires = {
@@ -249,6 +462,20 @@ return packer.startup({
         "nvim-treesitter/nvim-treesitter",
       }
     })
+
+    use({
+      'milanglacier/minuet-ai.nvim'
+    })
+
+    use {
+      'ravitemer/mcphub.nvim',
+      requires = { 'nvim-lua/plenary.nvim' }, -- Required for Job and HTTP requests
+      cmd = "MCPHub",                         -- lazy load by default
+      run = "npm install -g mcp-hub@latest",  -- Installs required mcp-hub npm module
+      config = function()
+        require("mcphub").setup()
+      end,
+    }
     -- use {
     --   "yetone/avante.nvim",
     --   build = "make BUILD_FROM_SOURCE=true",
@@ -282,11 +509,12 @@ return packer.startup({
     use({
       'MeanderingProgrammer/render-markdown.nvim',
       after = { 'nvim-treesitter' },
-      -- requires = { 'echasnovski/mini.nvim', opt = true }, -- if you use the mini.nvim suite
-      -- requires = { 'echasnovski/mini.icons', opt = true }, -- if you use standalone mini plugins
       requires = { 'nvim-tree/nvim-web-devicons', opt = true }, -- if you prefer nvim-web-devicons
       config = function()
-        require('render-markdown').setup({})
+        require('render-markdown').setup({
+          completions = { lsp = { enabled = true } },
+          file_types = { 'markdown', 'codecompanion', 'octo' }
+        })
       end,
     })
 

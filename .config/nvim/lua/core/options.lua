@@ -41,3 +41,6 @@ if vim.g.neovide then
   vim.keymap.set({ "n", "x" }, "<C-S-C>", '"+y', { desc = "Copy system clipboard" })
   vim.keymap.set({ "n", "x" }, "<C-S-V>", '"+p', { desc = "Paste system clipboard" })
 end
+
+vim.opt.foldmethod = "syntax" -- or "indent" for simpler folding
+vim.opt.foldlevelstart = 99       -- Open all folds by default

@@ -31,7 +31,7 @@ autocmd('BufEnter', {
 })
 
 -- Terminal settings:
--- Open a Terminal on the right tab
+-- Open a Terminal on the bottom tab
 autocmd('CmdlineEnter', {
   command = 'command! Term :botright vsplit term://$SHELL'
 })
@@ -55,17 +55,17 @@ autocmd('BufLeave', {
 
 -- For the folding being open by default
 
-augroup('open_folds', { clear = true })
-autocmd('BufReadPost', {
-    group = 'open_folds',
-    command = 'normal zR',
-    pattern = '*'
-})
-autocmd('FileReadPost', {
-    group = 'open_folds',
-    command = 'normal zR',
-    pattern = '*'
-})
+-- augroup('open_folds', { clear = true })
+-- autocmd('BufReadPost', {
+--     group = 'open_folds',
+--     command = 'normal zR',
+--     pattern = '*'
+-- })
+-- autocmd('FileReadPost', {
+--     group = 'open_folds',
+--     command = 'normal zR',
+--     pattern = '*'
+-- })
 
 -- Go
 autocmd("BufWritePre", {

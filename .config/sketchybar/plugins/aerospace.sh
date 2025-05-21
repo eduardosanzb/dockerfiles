@@ -20,13 +20,22 @@ case $1 in
         ICON="🌎"
         ;;
     "t")
-        ICON="🧑🏽‍💻"
+        ICON="🖥️"
         ;;
     "m")
         ICON="💬"
         ;;
-    "p") # "p" for "photography"
-        ICON="📸"
+    # "f") # foto
+    #     ICON="📸"
+    #     ;;
+    "p") # foto
+        ICON="🧑🏽‍💻"
+        ;;
+    "d") # "d" for "DB"
+        ICON="💾"
+        ;;
+    "n") # "n" for "notes"
+        ICON="📘"
         ;;
 esac
 
