@@ -2,13 +2,21 @@
 
 source "$CONFIG_DIR/colors.sh"
 
-
 url="https://www.githubstatus.com/api/v2/incidents/unresolved.json"
-data=$(http $url)
-
+data=$(curl -s $url)
 incidents=$(echo $data | jq '.incidents | length')
 
 GITHUB_LOGO=""
+ICON=" "
+LABEL="#incidents_$incidents"
+
+if [ $incidents -eq 0 ]; then
+  sketchybar --set $NAME  icon="$GITHUB_LOGO" icon.color=$GREEN label="alles gucci" label.color=$GREEN
+   exit 0
+fi
+echo "pulling github data"
+echo "incidents: $incidents"
+
 
 if [ $incidents -gt 0 ]; then
   highest_impact="none"
@@ -22,8 +30,6 @@ if [ $incidents -gt 0 ]; then
     color=$RED
   fi
 
-  ICON=" "
-  LABEL="#incidents_$incidents"
   sketchybar --set $NAME label=$LABEL icon=$ICON icon.color=$color label.color=$color
 else
   sketchybar --set $NAME  icon="$GITHUB_LOGO" icon.color=$GREEN label="alles gucci" label.color=$GREEN
