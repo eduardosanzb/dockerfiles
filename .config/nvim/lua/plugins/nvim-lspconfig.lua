@@ -19,7 +19,20 @@ if not cmp_status_ok then
 end
 
 -- Diagnostic options, see: `:help vim.diagnostic.config`
-vim.diagnostic.config({ virtual_text = true })
+-- lua/config/lsp.lua or your main init.lua
+
+-- Show the full diagnostic message in the floating window
+vim.diagnostic.config({
+  virtual_text = true,
+  float = {
+    -- Show the source of the diagnostic (e.g., 'tsserver', 'eslint')
+    source = "always",
+    -- Do not truncate the message
+    format = function(diagnostic)
+      return diagnostic.message
+    end,
+  },
+})
 
 -- Show line diagnostics automatically in hover window
 vim.cmd([[
@@ -110,7 +123,7 @@ local on_attach = function(client, bufnr)
   vim.keymap.set("n", "[d", ":lua vim.lsp.diagnostic.goto_prev()<CR>", bufopts)
   vim.keymap.set("n", "]d", ":lua vim.lsp.diagnostic.goto_next()<CR>", bufopts)
   vim.keymap.set("n", "<space>q", ":lua vim.lsp.diagnostic.set_loclist()<CR>", bufopts)
-  vim.keymap.set('n', '<space>f', function() vim.lsp.buf.format { async = true } end, bufopts)
+  -- vim.keymap.set('n', '<space>f', function() vim.lsp.buf.format { async = true } end, bufopts)
 end
 
 

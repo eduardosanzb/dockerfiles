@@ -42,23 +42,6 @@ vim.api.nvim_set_keymap('i', '<C-/>', 'copilot#Accept("<CR>")', { expr = true, s
 -- end, { silent = true })
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 -- Disable arrow keys --
 map('', '<up>', ':wincmd + <CR>')
 map('', '<down>', ':wincmd - <CR>')
@@ -79,6 +62,20 @@ map('', '<leader>wf', ':lua EduardoSanzbWindowFocus()<CR>') -- Focus on window c
 
 -- Reload configuration without restart nvim
 map('n', '<leader>ro', ':so %<CR>')
+
+-- Swap wrap
+function Swap_wrap()
+  if vim.wo.wrap then
+    vim.wo.wrap = false
+    vim.wo.linebreak = false
+    vim.cmd('set nowrap')
+  else
+    vim.wo.wrap = true
+    vim.wo.linebreak = true
+    vim.cmd('set wrap')
+  end
+end
+map('n', '<leader>wr', ':lua Swap_wrap()<CR>')
 
 -- paste --
 map('', '<leader>cp', ":w !pbcopy<CR>")
@@ -122,6 +119,7 @@ function RunPrettierAngGofmt()
   local file_extension = vim.fn.expand('%:e')
   local prettier_languages = { 'js', 'ts', 'json', 'yaml', 'yml' } -- Add more languages if needed
 
+  -- log the fileextend
   if file_extension == 'go' then
     vim.cmd('GoFmt')
   elseif vim.fn.index(prettier_languages, file_extension) >= 0 then
@@ -131,8 +129,10 @@ function RunPrettierAngGofmt()
   end
 end
 
+
 map('n', "<leader>f", ":lua RunPrettierAngGofmt()<CR>")
-map('n', 'K', ':lua vim.lsp.buf.hover()<CR>')
+-- map('n', 'K', ':lua vim.lsp.buf.hover()<CR>')
+map('n', 'K', '<Cmd>Lspsaga hover_doc<CR>')
 map('n', '<space>ca', ':lua vim.lsp.buf.code_action()<CR>')
 map('n', '<space>e', ':lua vim.diagnostic.open_float(0, {scope="line"})<CR>')
 
@@ -155,8 +155,8 @@ map('n', '<leader>md', ":Glow<CR>")
 map('n', '<leader>cd', ':set background=dark<CR>')
 map('n', '<leader>cl', ':set background=light<CR>')
 
--- Liveplatform
-map('n', '<leader>fp', ':!yarn format<CR>')
+-- trawa
+map('n', '<leader>fp', ':Prettier <CR>')
 
 -- Dap
 map('n', '<leader>du', ':lua require("dapui").toggle()<CR>')

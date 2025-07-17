@@ -34,6 +34,13 @@ return packer.startup({
     use 'wbthomason/packer.nvim'
 
 
+    -- CSV viewer
+    use ({
+      "hat0uma/csvview.nvim",
+        config = function()
+        require('csvview').setup()
+      end
+    })
 
     -- nvim v0.7.2
     use({
@@ -186,7 +193,12 @@ return packer.startup({
       "pmizio/typescript-tools.nvim",
       requires = { "nvim-lua/plenary.nvim", "neovim/nvim-lspconfig" },
       config = function()
-        require("typescript-tools").setup {}
+        require("typescript-tools").setup {
+          tsserver_format_options = {
+
+          },
+    tsserver_file_preferences = {},
+        }
       end,
     }
 
@@ -379,15 +391,15 @@ return packer.startup({
     }
 
 
-    use { 'anuvyklack/pretty-fold.nvim',
-      config = function()
-        require('pretty-fold').setup({
-          fold_closed = '', -- Closed fold icon
-          fold_opened = '', -- Opened fold icon
-          highlight = "Comment", -- Color for fold text
-        })
-      end
-    }
+    -- use { 'anuvyklack/pretty-fold.nvim',
+    --   config = function()
+    --     require('pretty-fold').setup({
+    --       fold_closed = '', -- Closed fold icon
+    --       fold_opened = '', -- Opened fold icon
+    --       highlight = "Comment", -- Color for fold text
+    --     })
+    --   end
+    -- }
     use { 'anuvyklack/fold-preview.nvim',
       requires = 'anuvyklack/keymap-amend.nvim',
       config = function()

@@ -119,3 +119,9 @@ if [ -f '/Users/eduardosanchez/Downloads/google-cloud-sdk/path.zsh.inc' ]; then 
 
 # The next line enables shell command completion for gcloud.
 if [ -f '/Users/eduardosanchez/Downloads/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/eduardosanchez/Downloads/google-cloud-sdk/completion.zsh.inc'; fi
+
+# Override macos sqlite for load extension
+export PATH="/opt/homebrew/opt/sqlite/bin:$PATH"
+export LDFLAGS="-L/opt/homebrew/opt/sqlite/lib"
+export CPPFLAGS="-I/opt/homebrew/opt/sqlite/include"
+

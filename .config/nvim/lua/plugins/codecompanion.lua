@@ -36,7 +36,8 @@ require("codecompanion").setup({
         schema = {
           model = {
             -- default = "qwen3-30b-a3b-128k@q5_k_m"
-            default = "qwen3-32b-128k"
+            -- default = "qwen3-32b-128k"
+            -- default = "qwen3-30b-a3b-mlx"
           },
         },
       })
