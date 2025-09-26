@@ -4,10 +4,13 @@ keybind = cmd+k=goto_split:top
 keybind = cmd+j=goto_split:bottom
 keybind = global:command+grave_accent=toggle_quick_terminal
 
-unfocused-split-opacity = 0.96
-# unfocused-split-fill = gray
+unfocused-split-fill = gray
+unfocused-split-opacity = 0.990
+background-opacity = 0.88
 
-background-opacity = 0.96
+theme = dark:catppuccin-macchiato,light:catppuccin-macchiato
 
-theme = dark:catppuccin-macchiato,light:farmhouse-light
-font-size = 20
+# window-theme=dark
+font-family = Google Sans Code
+font-size = 18
+

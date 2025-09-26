@@ -57,10 +57,19 @@ sketchybar --add item chevron left \
 
 ### Right
 sketchybar --add item clock right \
-           --set clock update_freq=5 icon=  script="$PLUGIN_DIR/clock.sh" icon.color=$WHITE \
+           --set clock \
+             update_freq=5 \
+             icon=  \
+             script="$PLUGIN_DIR/clock.sh" \
+             icon.color=$WHITE \
            --add item volume right \
            --set volume script="$PLUGIN_DIR/volume.sh" \
            --subscribe volume volume_change \
+           --add item weather right \
+           --set weather \
+              update_freq=600 \
+              script="$PLUGIN_DIR/weather.sh" \
+              background.drawing=on \
            --add item battery right \
            --set battery update_freq=120 script="$PLUGIN_DIR/battery.sh" \
            --subscribe battery system_woke power_source_change \

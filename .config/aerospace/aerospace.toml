@@ -10,8 +10,8 @@ after-login-command = []
 # 'after-startup-command' is run after 'after-login-command'
 # Available commands : https://nikitabobko.github.io/AeroSpace/commands
 after-startup-command = [
-  'exec-and-forget sketchybar',
-  'exec-and-forget borders active_color=0xffe1e3e4 inactive_color=0xff494d64 width=3.0'
+  'exec-and-forget borders active_color=0xffe1e3e4 inactive_color=0xff494d64 width=3.0',
+  'exec-and-forget sketchybar'
 ]
 
 exec-on-workspace-change = [
@@ -65,10 +65,10 @@ preset = 'qwerty'
 #                 Monitor pattern is the same as for 'workspace-to-monitor-force-assignment'.
 #                 See: https://nikitabobko.github.io/AeroSpace/guide#assign-workspaces-to-monitors
 [gaps]
-inner.horizontal = 10
-inner.vertical   = 5
-outer.top        = [{monitor."Built-in Retina Display" = 10 },{monitor."LG HDR 4K"=40},40 ]
-outer.bottom     = 10
+inner.horizontal = [{monitor."Built-in Retina Display"=10},{monitor."LG HDR 4K"=10},{monitor."Kuycon G32P"=7},10]
+inner.vertical   = 7
+outer.top        = [{monitor."Built-in Retina Display"=44},{monitor."LG HDR 4K"=40},{monitor."Kuycon G32P"=44},40]
+outer.bottom     = 7
 outer.left       = 5
 outer.right      = 5
 

@@ -13,35 +13,39 @@ require("codecompanion").setup({
   },
   strategies = {
     chat = {
-      adapter = "my_openai",
+        adapter = {
+          name = "my_openai"
+        },
     },
     inline = {
-      adapter = "my_openai",
+        adapter = {
+          name = "my_openai"
+        },
     },
     cmd = {
-      adapter = "my_openai",
+        adapter = {
+          name = "my_openai"
+        },
     },
   },
   adapters = {
-    opts = {
-      show_defaults = false,
-    },
-
+  http = {
     my_openai = function()
-      return require("codecompanion.adapters").extend("openai_compatible", {
+    return require("codecompanion.adapters").extend("openai_compatible", {
+      name ="lmstudio",
         env = {
           url = "http://localhost:1234",
           chat_url = "/v1/chat/completions",
         },
         schema = {
           model = {
-            -- default = "qwen3-30b-a3b-128k@q5_k_m"
-            -- default = "qwen3-32b-128k"
-            -- default = "qwen3-30b-a3b-mlx"
+            default = "qwen/qwen3-coder-30b",
+            model = "qwen/qwen3-coder-30b"
           },
         },
       })
     end,
+  },
   },
 })
 

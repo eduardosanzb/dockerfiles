@@ -179,6 +179,9 @@ lspconfig.lua_ls.setup {
   }
 }
 
+vim.lsp.enable('copilot')
+
+
 
 -- lspconfig.ts_ls.setup {
 --   on_attach = on_attach,
@@ -191,7 +194,7 @@ lspconfig.lua_ls.setup {
 
 
 -- Golang
-lspconfig.golangci_lint_ls.setup{}
+lspconfig.golangci_lint_ls.setup {}
 lspconfig.gopls.setup({})
 
 

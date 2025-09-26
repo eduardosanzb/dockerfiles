@@ -21,9 +21,9 @@ nvim_tree.setup({
   },
 
   view = {
+    width = 40,
     relativenumber = true,
     preserve_window_proportions = true,
-
 
   },
 

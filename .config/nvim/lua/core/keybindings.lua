@@ -86,7 +86,7 @@ map('n', '<leader>vt', ':belowright vs term://zsh<CR>', { noremap = true })
 map('t', '<leader><Esc>', '<C-\\><C-n><CR>')
 
 -- Plugins --
--- TreeSitter
+-- Nvim tree
 map('', '<tab>', ":lua require('nvim-tree.api').tree.toggle({ focus = false })<CR>")
 map('', '<leader><tab>', ":lua require('nvim-tree.api').tree.open({ find_file = true })<CR>")
 map("n", "<leader>mn", ":lua require('nvim-tree.api').marks.navigate.next()<CR>")
@@ -94,26 +94,48 @@ map("n", "<leader>mp", ":lua require('nvim-tree.api').marks.navigate.prev()<CR>"
 map("n", "<leader>ms", ":lua require('nvim-tree.api').marks.navigate.select()<CR>")
 map('', '<leader>ex', ":norm zR<CR>")
 
--- Telescope
--- files
-map('', "<leader>ps", ":lua require('telescope.builtin').grep_string({ search = vim.fn.input('Grep For >')})<CR>")
-map('', "<leader>ff", ":lua require('telescope.builtin').find_files()<CR>")
-
--- map('', "<leader>fg", ":lua require('telescope.builtin').live_grep()<CR>")
-map("", "<leader>fg", ":lua require('telescope').extensions.live_grep_args.live_grep_args()<CR>")
-
-map('', "<leader>fh", ":lua require('telescope.builtin').help_tags()<CR>")
-map('', "<leader>km", ":lua require('telescope.builtin').keymaps()<CR>")
-map('', "<leader>fr", ":lua require('telescope.builtin').resume()<CR>")
-map('', "<leader>fo", ":Telescope oldfiles<CR>")
--- lsp
-map('', "<leader>gi", ":lua require('telescope.builtin').lsp_implementations()<CR>")
-map('', "<leader>gD", ":lua require('telescope.builtin').lsp_type_definitions()<CR>")
-map('', "<leader>gd", ":lua require('telescope.builtin').lsp_definitions()<CR>")
-map('', "<leader>gr", ":lua require('telescope.builtin').lsp_references()<CR>")
-map('', "<leader>gs", ":lua require('telescope.builtin').lsp_document_symbols()<CR>")
-map('', "<leader>sd", ":lua require('telescope.builtin').diagnostics()<CR>")
 map('', "<leader>rn", ":lua vim.lsp.buf.rename()<CR>")
+
+-- Snacks
+map('n', "<leader>n", ":lua Snacks.picker.notifications()<CR>")
+map('n', "<leader>ch", ":lua Snacks.picker.command_history()<CR>")
+
+-- Files
+map('n', "<leader>ps", ":lua local search = vim.fn.input('Grep For > '); if search ~= '' then Snacks.picker.grep({ search = search }) end<CR>")
+map('n', "<leader>ff", ":lua Snacks.picker.files({ hidden = true, follow = true })<CR>")
+
+
+
+map('n', "<leader>fg", ":lua Snacks.picker.grep()<CR>")
+map('n', "<leader>/", ":lua Snacks.picker.lines()<CR>")
+map('n', "<leader>fh", ":lua Snacks.picker.help()<CR>")
+map('n', "<leader>km", ":lua Snacks.picker.keymaps()<CR>")
+map('n', "<leader>fr", ":lua Snacks.picker.resume()<CR>")
+map('n', "<leader>fo", ":lua Snacks.picker.recent()<CR>")
+
+-- LSP
+map('n', "<leader>gi", ":lua Snacks.picker.lsp_implementations()<CR>")
+map('n', "<leader>gD", ":lua Snacks.picker.lsp_type_definitions()<CR>")
+map('n', "<leader>gd", ":lua Snacks.picker.lsp_definitions()<CR>")
+map('n', "<leader>gr", ":lua Snacks.picker.lsp_references()<CR>")
+map('n', "<leader>gs", ":lua Snacks.picker.lsp_symbols()<CR>")
+map('n', "<leader>sd", ":Trouble diagnostics toggle<CR>")
+
+-- Git
+-- map('n', "<leader>gb", ":lua Snacks.picker.git_branches()<CR>")
+-- map('n', "<leader>gl", ":lua Snacks.picker.git_log()<CR>")
+-- map('n', "<leader>gL", ":lua Snacks.picker.git_log_line()<CR>")
+-- map('n', "<leader>gs", ":lua Snacks.picker.git_status()<CR>")
+-- map('n', "<leader>gS", ":lua Snacks.picker.git_stash()<CR>")
+-- map('n', "<leader>gd", ":lua Snacks.picker.git_diff()<CR>")
+-- map('n', "<leader>gf", ":lua Snacks.picker.git_log_file()<CR>")
+
+-- UI Overrides (discussed but not finalized)
+-- Command line replacement options:
+-- map('n', ':', ":lua Snacks.input({ prompt = ':', completion = 'cmdline', history = 'cmd' }, function(cmd) if cmd and cmd ~= '' then pcall(vim.cmd, cmd) end end)<CR>")
+-- map('n', '<leader>:', ":lua Snacks.picker.commands()<CR>")
+-- map('n', '<leader>ch', ":lua Snacks.picker.command_history()<CR>")
+
 
 function RunPrettierAngGofmt()
   local file_extension = vim.fn.expand('%:e')
@@ -157,6 +179,8 @@ map('n', '<leader>cl', ':set background=light<CR>')
 
 -- trawa
 map('n', '<leader>fp', ':Prettier <CR>')
+map('n', '<leader>coe', ':Copilot enable<CR>')
+map('n', '<leader>cod', ':Copilot disable<CR>')
 
 -- Dap
 map('n', '<leader>du', ':lua require("dapui").toggle()<CR>')

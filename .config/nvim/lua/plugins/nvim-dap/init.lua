@@ -29,7 +29,48 @@
 --   library = { plugins = { "nvim-dap-ui" }, types = true },
 -- })
 
--- require("dapui").setup()
+local dap, dapui = require("dap"), require("dapui")
+local utils = require("dap.utils")
+
+dap.listeners.before.attach.dapui_config = function()
+  dapui.open()
+end
+dap.listeners.before.launch.dapui_config = function()
+  dapui.open()
+end
+dap.listeners.before.event_terminated.dapui_config = function()
+  dapui.close()
+end
+dap.listeners.before.event_exited.dapui_config = function()
+  dapui.close()
+end
+
+dap.adapters = {
+  ["pwa-node"] = {
+    type = "server",
+    port = "${port}",
+    executable = "js-debug-adapter",
+    args = {
+      "${port}",
+    }
+  }
+}
+dap.configurations["typescript"] = {
+        {
+          type = "pwa-node",
+          request = "launch",
+          name = "Launch file",
+          program = "${file}",
+          cwd = "${workspaceFolder}",
+        },
+        {
+          type = "pwa-node",
+          request = "attach",
+          name = "Attach to process ID",
+          processId = utils.pick_process,
+          cwd = "${workspaceFolder}",
+        },
+}
 -- require('dap-go').setup {
 --   -- Additional dap configurations can be added.
 --   -- dap_configurations accepts a list of tables where each entry

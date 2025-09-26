@@ -35,9 +35,9 @@ return packer.startup({
 
 
     -- CSV viewer
-    use ({
+    use({
       "hat0uma/csvview.nvim",
-        config = function()
+      config = function()
         require('csvview').setup()
       end
     })
@@ -61,9 +61,23 @@ return packer.startup({
 
     -- The bundle of plugins
     use 'hville/lazy-stats'
+    use 'MunifTanjim/nui.nvim'
     use {
       "folke/snacks.nvim",
+      require = { 'nvim-mini/mini.icons' }
     }
+    use {
+      'folke/noice.nvim',
+      requires = {
+        -- if you lazy-load any plugin below, make sure to add proper `module="..."` entries
+        "MunifTanjim/nui.nvim",
+        -- OPTIONAL:
+        --   `nvim-notify` is only needed, if you want to use the notification view.
+        --   If not available, we use `mini` as the fallback
+        "rcarriga/nvim-notify",
+      }
+    }
+
     use "folke/which-key.nvim"
     use "Morozzzko/git_browse.nvim"
 
@@ -137,6 +151,13 @@ return packer.startup({
       end
     }
 
+    -- replace fzf instread of treeesi
+    use {
+      'ibhagwan/fzf-lua',
+      requires = {
+        { 'kyazdani42/nvim-web-devicons' }
+      }
+    }
     -- Treesitter interface
     use 'nvim-treesitter/nvim-treesitter'
     use 'nvim-treesitter/nvim-treesitter-context'
@@ -149,6 +170,7 @@ return packer.startup({
         -- { "mfussenegger/nvim-dap" }
       }
     }
+    use { "rcarriga/nvim-dap-ui", requires = { "mfussenegger/nvim-dap", "nvim-neotest/nvim-nio" } }
 
     -- Docs generator
     use {
@@ -162,12 +184,16 @@ return packer.startup({
     }
     -- Color schemes
     use 'navarasu/onedark.nvim'
-    use 'ellisonleao/gruvbox.nvim'
+    use 'folke/tokyonight.nvim'
     use { "catppuccin/nvim", as = "catppuccin" }
+    use 'yorickpeterse/nvim-grey'
     use 'arzg/vim-colors-xcode'
 
-    use 'f-person/auto-dark-mode.nvim'
     use "delphinus/auto-cursorline.nvim"
+
+
+    -- diagnostics better
+    use 'folke/trouble.nvim'
 
 
     -- shadow of multiwindows
@@ -197,7 +223,7 @@ return packer.startup({
           tsserver_format_options = {
 
           },
-    tsserver_file_preferences = {},
+          tsserver_file_preferences = {},
         }
       end,
     }
@@ -280,14 +306,14 @@ return packer.startup({
 
     -- Markdown preview
     use { "ellisonleao/glow.nvim" }
-    use {
-      'edluffy/hologram.nvim',
-      config = function()
-        require('hologram').setup {
-          auto_display = true -- WIP automatic markdown image display, may be prone to breaking
-        }
-      end
-    }
+    -- use {
+    --   'edluffy/hologram.nvim',
+    --   config = function()
+    --     require('hologram').setup {
+    --       auto_display = true -- WIP automatic markdown image display, may be prone to breaking
+    --     }
+    --   end
+    -- }
 
     use {
       "3rd/image.nvim",
@@ -460,12 +486,13 @@ return packer.startup({
       config = function()
         require("llm").setup({
           url = "http://127.0.0.1:1234/v1/chat/completions",
-          model = "mlx-community/glm-4-32b-0414",
+          model = "qwen/qwen3-coder-30b",
           api_type = "openai",
           streaming_handler = local_llm_parse_handler
         })
       end,
     })
+
 
     use({
       "olimorris/codecompanion.nvim",
@@ -478,6 +505,11 @@ return packer.startup({
     use({
       'milanglacier/minuet-ai.nvim'
     })
+
+
+    -- lookings
+    use { 'akinsho/bufferline.nvim', tag = "*", requires = 'nvim-tree/nvim-web-devicons' }
+
 
     use {
       'ravitemer/mcphub.nvim',

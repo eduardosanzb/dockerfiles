@@ -88,9 +88,9 @@ end
 -- Menu
 dashboard.section.buttons.val = {
   dashboard.button('a', '  New file', ':ene <BAR> startinsert<CR>'),
-  dashboard.button("f", "  Find File   ", ":Telescope find_files<CR>"),
-  dashboard.button("t", "  Find Text   ", ":Telescope live_grep<CR>"),
-  dashboard.button("r", "  > Recent"   , ":Telescope oldfiles<CR>"),
+  dashboard.button("f", "  Find File   ", ":lua Snacks.picker.files({ hidden = true, follow = true})<CR>"),
+  dashboard.button("t", "  Find Text   ", ":lua Snacks.picker.grep_buffesr()<CR>"),
+  dashboard.button("r", "  > Recent"   , ":lua Snacks.picker.recent()<CR>"),
   dashboard.button('s', '  Settings', ':e $MYVIMRC<CR>'),
   dashboard.button('u', '  Update plugins', ':PackerUpdate<CR>'),
   dashboard.button('q', '  Quit', ':qa<CR>'),
