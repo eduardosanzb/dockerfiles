@@ -67,7 +67,7 @@ preset = 'qwerty'
 [gaps]
 inner.horizontal = [{monitor."Built-in Retina Display"=10},{monitor."LG HDR 4K"=10},{monitor."Kuycon G32P"=7},10]
 inner.vertical   = 7
-outer.top        = [{monitor."Built-in Retina Display"=44},{monitor."LG HDR 4K"=40},{monitor."Kuycon G32P"=44},40]
+outer.top        = [{monitor."Built-in Retina Display"=10},{monitor."LG HDR 4K"=40},{monitor."Kuycon G32P"=44},40]
 outer.bottom     = 7
 outer.left       = 5
 outer.right      = 5
