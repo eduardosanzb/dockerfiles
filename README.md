@@ -23,4 +23,13 @@ cd dockerfiles
 stow -t $HOME .
 ```
 
+## Security
+
+⚠️ **Important**: This repository contains configuration files with placeholder values and default passwords. Before using in any environment, please review the [SECURITY.md](SECURITY.md) file for important security considerations.
+
+Key points:
+- Copy `.env.example` to `.env` and add your actual secrets (already gitignored)
+- Override default Docker passwords when building images
+- Never commit real API keys or tokens to the repository
+
 #

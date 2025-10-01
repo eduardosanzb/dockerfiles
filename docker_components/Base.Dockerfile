@@ -3,6 +3,8 @@ LABEL maintainer="Eduardo Bautista <eduardosanzb@gmail.com>"
 
 ARG DEBIAN_FRONTEND=noninteractive
 ARG USER_NAME="eduardosanzb"
+# WARNING: Default password for development only
+# Override this value when building: --build-arg USER_PASSWORD=your_secure_password
 ARG USER_PASSWORD="password"
 
 
