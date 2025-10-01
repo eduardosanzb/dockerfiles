@@ -3,14 +3,10 @@
 # --------------------------------------------------------------
 export ZSH="$HOME/.oh-my-zsh"
 
-# No theme – we will define our own prompt later.
-ZSH_THEME=""               # <-- important!
+# Use custom Eastwood theme with hostname
+ZSH_THEME="eastwood-with-hostname"
 
-# Optional: if you prefer a built‑in theme that already shows host/cwd,
-# just comment the line above and set e.g.  ZSH_THEME="agnoster"
-# --------------------------------------------------------------
-
-source $ZSH/oh-my-zsh.sh   # ← **must be before our custom prompt**
+source $ZSH/oh-my-zsh.sh
 # --------------------------------------------------------------
 # 2️⃣ Your environment variables / aliases / plugins (unchanged)
 # --------------------------------------------------------------
@@ -110,16 +106,6 @@ export CPPFLAGS="-I/opt/homebrew/opt/sqlite/include"
 
 # LM Studio CLI (append to PATH)
 export PATH="$PATH:/Users/eduardosanchez/.lmstudio/bin"
-
-# ----------------------------------------------------------------
-# 5️⃣ **Custom prompt** – this is now the *last* thing that runs
-# ----------------------------------------------------------------
-autoload -U colors && colors          # enable %F{color} syntax
-setopt PROMPT_SUBST                    # allow parameter expansion
-
-#   %n = username, %m = short hostname, %~ = cwd (with ~ for $HOME)
-PROMPT='%F{green}%n%f@%F{blue}%m %F{yellow}%~%f %# '
-RPROMPT='%F{magenta}%T%f'               # optional right‑hand side
 
 # ----------------------------------------------------------------
 # 6️⃣ Helper function you already had (unchanged)

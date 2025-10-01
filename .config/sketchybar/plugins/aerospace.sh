@@ -31,10 +31,10 @@ case $1 in
     "n") # "n" for "notes"
         ICON="📘"
         ;;
-    "t")
+    "p") # personal
         ICON="🖥️"
         ;;
-    "p") # foto
+    "t") # terminal
         ICON="🧑🏽‍💻"
         ;;
 esac
