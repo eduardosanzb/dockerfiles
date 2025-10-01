@@ -38,3 +38,5 @@ aws/credentials
 # Token files
 *token*
 !*noesuntoken*
+.config/github-copilot/versions.json
+.config
