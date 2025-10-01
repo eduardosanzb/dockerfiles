@@ -10,6 +10,8 @@ services:
         # GROUP_ID: ${GID:-1000}
         GROUP_ID: 1000
         USER_NAME: 'eduardosanzb'
+        # WARNING: Default password for development only
+        # Override with environment variable: USER_PASSWORD=your_secure_password
         USER_PASSWORD: 'password'
         GIT_USER_NAME: 'eduardo sanchez bautista'
         GIT_USER_EMAIL: 'eduardosanzb@gmail.com'

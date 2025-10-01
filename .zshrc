@@ -51,6 +51,9 @@ fi
 # --------------------------------------------------------------
 # 4️⃣ More env vars (unchanged)
 # --------------------------------------------------------------
+# WARNING: This is a placeholder token, not a real secret.
+# For real tokens, set them in your environment or in ~/.env file
+# which is already sourced above and should be in .gitignore
 export NPM_GITHUB_TOKEN=noesuntoken
 export REDIS_IN_MEMORY_VERSION=6.0.10
 ZSH_COMMAND_TIME_MIN_SECONDS=3

@@ -8,6 +8,8 @@ ARG USER_ID
 ARG GROUP_ID
 
 ARG USER_NAME eduardosanzb
+# WARNING: Default password for development only
+# Override this value when building: --build-arg USER_PASSWORD=your_secure_password
 ARG USER_PASSWORD password
 
 ARG GIT_USER_NAME

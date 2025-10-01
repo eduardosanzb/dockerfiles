@@ -17,3 +17,24 @@ aws/credentials
 .config/github-copilot
 .config/github-copilot
 .config/github-copilot
+
+# Environment files with secrets
+.env
+.env.local
+.env.*.local
+*.env
+**/env
+**/env.fish
+
+# Secret and credential files
+*secret*
+*credentials*
+*.pem
+*.key
+!*.key.pub
+*.p12
+*.pfx
+
+# Token files
+*token*
+!*noesuntoken*
