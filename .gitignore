@@ -17,3 +17,5 @@ aws/credentials
 .config/github-copilot
 .config/github-copilot
 .config/github-copilot
+.config/github-copilot/versions.json
+.config
