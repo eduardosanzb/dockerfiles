@@ -6,6 +6,9 @@ export ZSH="$HOME/.oh-my-zsh"
 # Use custom Eastwood theme with hostname
 ZSH_THEME="eastwood-with-hostname"
 
+# Add custom themes directory
+ZSH_CUSTOM="$HOME/.zsh/custom"
+
 source $ZSH/oh-my-zsh.sh
 # --------------------------------------------------------------
 # 2️⃣ Your environment variables / aliases / plugins (unchanged)
