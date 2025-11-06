@@ -11,7 +11,7 @@ ICON=" "
 LABEL="#incidents_$incidents"
 
 if [ $incidents -eq 0 ]; then
-  sketchybar --set $NAME  icon="$GITHUB_LOGO" icon.color=$GREEN label="alles gucci" label.color=$GREEN
+  sketchybar --set $NAME  icon="$GITHUB_LOGO" icon.color=$GREEN label="" label.color=$GREEN
    exit 0
 fi
 echo "pulling github data"
@@ -32,6 +32,6 @@ if [ $incidents -gt 0 ]; then
 
   sketchybar --set $NAME label=$LABEL icon=$ICON icon.color=$color label.color=$color
 else
-  sketchybar --set $NAME  icon="$GITHUB_LOGO" icon.color=$GREEN label="alles gucci" label.color=$GREEN
+  sketchybar --set $NAME  icon="$GITHUB_LOGO" icon.color=$GREEN label="" label.color=$GREEN
 fi
 

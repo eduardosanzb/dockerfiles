@@ -8,10 +8,7 @@
 -- For configuration see the Wiki: https://github.com/neovim/nvim-lspconfig/wiki
 -- Autocompletion settings of "nvim-cmp" are defined in plugins/nvim-cmp.lua
 
-local lsp_status_ok, lspconfig = pcall(require, "lspconfig")
-if not lsp_status_ok then
-  return
-end
+local lspconfig = vim.lsp.config
 
 local cmp_status_ok, cmp_nvim_lsp = pcall(require, "cmp_nvim_lsp")
 if not cmp_status_ok then
@@ -150,7 +147,7 @@ local servers = {
 
 -- Call setup
 for _, lsp in ipairs(servers) do
-  lspconfig[lsp].setup({
+  vim.lsp.config(lsp, {
     on_attach = on_attach,
     capabilities = capabilities,
     flags = {
@@ -164,7 +161,7 @@ vim.g.markdown_fenced_languages = {
   "ts=typescript",
 }
 
-lspconfig.lua_ls.setup {
+vim.lsp.config('lua_ls',{
   on_attach = on_attach,
   capabilities = capabilities,
   flags = {
@@ -177,9 +174,23 @@ lspconfig.lua_ls.setup {
       }
     }
   }
-}
+})
 
 vim.lsp.enable('copilot')
+vim.lsp.config('golangci_lint_ls', {
+  on_attach = on_attach,
+  capabilities = capabilities,
+  flags = {
+    debounce_text_changes = 150,
+  },
+})
+vim.lsp.config('gopls', {
+  on_attach = on_attach,
+  capabilities = capabilities,
+  flags = {
+    debounce_text_changes = 150,
+  },
+})
 
 
 
@@ -193,9 +204,6 @@ vim.lsp.enable('copilot')
 -- }
 
 
--- Golang
-lspconfig.golangci_lint_ls.setup {}
-lspconfig.gopls.setup({})
 
 
 

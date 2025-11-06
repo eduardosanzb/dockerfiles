@@ -12,7 +12,7 @@
           "name": "Qwen 3 next (local)"
         },
         "openai/gpt-oss-120b": {
-          "name": " dagpt oss 120b (local)"
+          "name": "dagpt oss 120b (local)"
         }
       }
     }
