@@ -437,15 +437,13 @@ return packer.startup({
       'pwntester/octo.nvim',
       requires = {
         'nvim-lua/plenary.nvim',
-        'nvim-telescope/telescope.nvim',
+        'folke/snacks.nvim',
         'kyazdani42/nvim-web-devicons',
       },
       config = function()
         require "octo".setup({
-          -- SSH aliases. e.g. `ssh_aliases = {["github.com-work"] = "github.com"}`. The key part will be interpreted as an anchored Lua pattern.
           ssh_aliases = {
             ["github.com"] = "github.com",
-            ["github.com-trawa"] = "github.com",
           },
 
         })

@@ -6,7 +6,7 @@ keybind = global:command+grave_accent=toggle_quick_terminal
 
 unfocused-split-fill = gray
 unfocused-split-opacity = 0.990
-background-opacity = 0.88
+background-opacity = 0.95
 
 theme = dark:catppuccin-macchiato,light:catppuccin-macchiato
 

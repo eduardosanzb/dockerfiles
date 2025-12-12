@@ -4,17 +4,22 @@
     "lmstudio": {
       "npm": "@ai-sdk/openai-compatible",
       "name": "LM Studio (local)",
-      "options": {
-        "baseURL": "http://localhost:1234/v1"
-      },
+      "options": { "baseURL": "http://localhost:1234/v1" },
       "models": {
-        "qwen/qwen3-next-80b": {
-          "name": "Qwen 3 next (local)"
-        },
-        "openai/gpt-oss-120b": {
-          "name": "dagpt oss 120b (local)"
-        }
+        "qwen/qwen3-next-80b": { "name": "Qwen 3 next (local)" },
+        "openai/gpt-oss-120b": { "name": "dagpt oss 120b (local)" }
       }
+    }
+  },
+  "mcp": {
+    "MCP_DOCKER": { "type": "local", "command": ["docker", "mcp", "gateway", "run"], "enabled": true },
+    "mcp-outline": {
+      "type": "remote",
+      "url": "http://localhost:3000/mcp",
+       "headers": {
+        "Authorization": "Bearer lol"
+      },
+      "enabled": true
     }
   }
 }
