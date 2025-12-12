@@ -1,7 +1,10 @@
 #!/bin/zsh
 
-API_KEY="48a4de1631dd451baca91147252108" # insert api key here
-CITY="Berlin" # insert city here
+# WARNING: Do not hardcode API keys in this file!
+# Set WEATHER_API_KEY in your environment or ~/.env file
+# Get your API key from: https://www.weatherapi.com/
+API_KEY="${WEATHER_API_KEY:-}"
+CITY="${WEATHER_CITY:-Berlin}" # default city
 
 # first comment is description, second is icon number
 weather_icons_day=(
@@ -106,6 +109,12 @@ weather_icons_night=(
     [1282]=  # Moderate or heavy snow with thunder/395
 )
 
+
+if [ -z "$API_KEY" ]; then
+    echo "Error: WEATHER_API_KEY environment variable not set"
+    sketchybar -m --set weather icon="?" label="No API Key"
+    exit 1
+fi
 
 echo "http://api.weatherapi.com/v1/current.json?key=$API_KEY&q=$CITY"
 data=$(curl -s "http://api.weatherapi.com/v1/current.json?key=$API_KEY&q=$CITY")
