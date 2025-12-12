@@ -117,7 +117,7 @@ This document contains the results of a comprehensive security audit performed o
    - Docker image scanning
 
 3. **API Key Rotation**: Rotate the Weather API key that was previously exposed
-   - The old key `48a4de1631dd451baca91147252108` should be revoked
+   - The old key ending in `...252108` should be revoked at weatherapi.com
    - Generate a new key from https://www.weatherapi.com/
 
 ## Compliance Status
@@ -140,7 +140,7 @@ The repository security posture is now **GOOD** after fixing the hardcoded API k
 
 ### Action Items for Repository Owner
 
-1. **CRITICAL**: Revoke the exposed Weather API key `48a4de1631dd451baca91147252108`
+1. **CRITICAL**: Revoke the exposed Weather API key (ending in `...252108`) at weatherapi.com
 2. Generate a new Weather API key from https://www.weatherapi.com/
 3. Add the new key to your local `~/.env` file as `WEATHER_API_KEY=your_new_key`
 4. Consider enabling GitHub's secret scanning alerts
